@@ -7,9 +7,9 @@
 <meta name="description" content="Cusmaan Binu Cafaan Secondary School — Today a reader, tomorrow a leader." />
 <style>
   :root{
-    --primary:#114f7a;        /* logo navy */
+    --primary:#114f7a;
     --primary-700:#0d3b60;
-    --accent:#2e8b57;         /* logo green */
+    --accent:#2e8b57;
     --accent-700:#216845;
     --ink:#22313f;
     --muted:#6b7b8c;
@@ -18,6 +18,9 @@
     --shadow:0 10px 30px rgba(17,76,129,.10);
     --radius:14px;
     --header-h:74px;
+
+    /* Principal portrait sizing */
+    --portrait-size: clamp(180px, 22vw, 280px);
   }
 
   /* Reset/typography */
@@ -58,9 +61,7 @@
   }
   .nav > li > a.active, .nav > li > button.active,
   .nav > li > a:hover, .nav > li > button:hover{background:var(--paper); color:var(--primary)}
-  .cta{
-    background:var(--accent); color:#fff !important; box-shadow:var(--shadow);
-  }
+  .cta{background:var(--accent); color:#fff !important; box-shadow:var(--shadow);}
   .cta:hover{background:var(--accent-700)}
   .chev{width:16px; height:16px; margin-left:6px; vertical-align:-2px}
 
@@ -120,7 +121,7 @@
     position:absolute; inset:0;
     background-image:
       linear-gradient(to bottom, rgba(3,18,33,.68), rgba(3,18,33,.68)),
-      url("Images/school-campus.jpg"); /* replace if needed */
+      url("Images/school-campus.jpg");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -158,14 +159,8 @@
     transition:transform .15s ease, box-shadow .2s ease, background-color .15s ease;
   }
   .hero .btn:hover{ transform:translateY(-1px); box-shadow:0 14px 36px rgba(46,139,87,.55); }
-  .hero .tagline{
-    margin-top:14px;
-    font-size:.95rem;
-    color:rgba(255,255,255,.82);
-  }
-  @media (max-width:480px){
-    .hero{min-height:86vh}
-  }
+  .hero .tagline{ margin-top:14px; font-size:.95rem; color:rgba(255,255,255,.82); }
+  @media (max-width:480px){ .hero{min-height:86vh} }
 
   /* Sections */
   .section{padding:64px 0}
@@ -179,8 +174,6 @@
   .link-row{margin-top:16px}
   .link-row a{font-weight:700}
 
-  @media (max-width:900px){ .grid.cards{grid-template-columns:1fr} }
-
   /* Buttons (global) */
   .btn{
     display:inline-flex; gap:10px; align-items:center; padding:12px 16px;
@@ -190,6 +183,8 @@
   .btn:hover{border-color:var(--primary); color:var(--primary)}
   .btn.primary{background:var(--accent); color:#fff; border-color:transparent}
   .btn.primary:hover{background:var(--accent-700)}
+
+  @media (max-width:900px){ .grid.cards{grid-template-columns:1fr} }
 
   /* Tables & gallery */
   table{width:100%; border-collapse:collapse; background:#fff; border:1px solid #edf0f5; border-radius:12px; overflow:hidden}
@@ -216,13 +211,32 @@
   /* --- About: split layout + responsive video --- */
   .split-2col{display:grid; grid-template-columns:1.1fr .9fr; gap:24px}
   @media (max-width:900px){ .split-2col{grid-template-columns:1fr} }
-  .video-frame{
-    position:relative; overflow:hidden; border-radius:16px; background:#000; box-shadow:var(--shadow);
-  }
-  .video-frame::before{content:""; display:block; padding-top:56.25%} /* 16:9 */
-  .video-frame > video, .video-frame > iframe{
-    position:absolute; inset:0; width:100%; height:100%; border:0; object-fit:cover;
-  }
+  .video-frame{position:relative; overflow:hidden; border-radius:16px; background:#000; box-shadow:var(--shadow)}
+  .video-frame::before{content:""; display:block; padding-top:56.25%}
+  .video-frame > video, .video-frame > iframe{position:absolute; inset:0; width:100%; height:100%; border:0; object-fit:cover}
+
+  /* ===== Principal: Home summary ===== */
+  .principal-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:start}
+  @media (max-width:900px){ .principal-grid{grid-template-columns:1fr} }
+  .principal-msg{ position:relative; padding-left:16px; }
+  .principal-msg::before{content:""; position:absolute; left:0; top:.4rem; bottom:.4rem; width:4px; border-radius:4px; background:linear-gradient(180deg,var(--accent),#4aa97a)}
+  .portrait-sm{ align-self:start; justify-self:end; text-align:center; }
+  @media (max-width:900px){ .portrait-sm{ justify-self:center; } }
+  .avatar-circle{ width:var(--portrait-size); aspect-ratio:1/1; border-radius:999px; overflow:hidden; border:4px solid #fff; box-shadow:var(--shadow); margin:0 auto 8px; background:#f8fafc}
+  .avatar-circle img{ display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
+  .portrait-sm figcaption{ padding:6px 8px; font-size:14px; color:var(--muted); }
+
+  /* ===== Principal page (match screenshot) ===== */
+  .principal-full .container{max-width:920px}
+  .principal-title{margin:0 0 6px; font-size:clamp(28px,2.6vw,34px); color:var(--primary-700); letter-spacing:.2px}
+  .principal-lead{margin:0 0 18px; color:var(--muted)}
+  .principal-card{background:#fff; border:1px solid #edf0f5; border-radius:14px; box-shadow:var(--shadow); padding:24px}
+  .principal-card .message{position:relative; padding-left:18px}
+  .principal-card .message::before{content:""; position:absolute; left:0; top:.35rem; bottom:.35rem; width:4px; border-radius:4px; background:linear-gradient(180deg,var(--accent),#4aa97a)}
+  .principal-card p{margin:0 0 12px}
+  .signature{border-top:1px solid #edf0f5; margin-top:18px; padding-top:14px; color:#334155}
+  .back{display:inline-block; margin-top:16px; padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none; color:#fff; background:var(--accent)}
+  .back:hover{filter:brightness(0.95)}
 </style>
 </head>
 <body>
@@ -230,10 +244,8 @@
 <header class="site-header">
   <div class="container nav-row">
     <a href="#/home" class="brand" aria-label="School home">
-      <!-- Inlined logo (compressed) -->
       <img alt="School Logo" width="52" height="52"
-           src="data:image/webp;base64,UklGRj0AAABXRUJQVlA4TBkAAAAvE8AAEJ8AP0nWgFvM0KJAAf8S4mJg1qgYwAAAPr8zv9PAAEAAABWUDhMFQAAADYkQAAAHrjnk7o/3qv0yq0T3oAAABJAAA... (trimmed placeholder)">
-      <!-- NOTE: Replace the src with the full data URI injected by the script below. -->
+           src="data:image/webp;base64,UklGRj0AAABXRUJQVlA4TBkAAAAvE8AAEJ8AP0nWgFvM0KJAAf8S4mJg1qgYwAAAPr8zv9PAAEAAABWUDhMFQAAADYkQAAAHrjnk7o/3qv0yq0T3oAAABJAAA...">
     </a>
 
     <!-- Desktop Navigation -->
@@ -319,27 +331,24 @@
 
 <main>
 
-  <!-- HOME (with all main sections) -->
+  <!-- HOME -->
   <div data-route="home" class="active">
     <!-- HERO -->
     <section class="hero" role="region" aria-label="School hero">
       <div class="content">
         <h1>Where discipline meets opportunity</h1>
         <p class="lead">A calm, focused place to learn and grow—strong minds, strong values.</p>
-        <div class="cta">
-          <a class="btn" href="#/enroll">Enroll Now</a>
-        </div>
+        <div class="cta"><a class="btn" href="#/enroll">Enroll Now</a></div>
         <p class="tagline">Today a reader, tomorrow a leader.</p>
       </div>
     </section>
     <!-- /HERO -->
 
-    <!-- HOME: About Us (updated with your copy) -->
+    <!-- HOME: About Us -->
     <section id="home-about" class="section">
       <div class="container">
         <h2>About Us</h2>
         <div class="split-2col" style="margin-top:18px">
-          <!-- LEFT: About Us text -->
           <div class="grid" style="gap:18px">
             <article class="card">
               <p>Welcome to Cusmaan Binu Cafaan Secondary School, where we believe that a truly great education builds both the mind and the soul. Our school provides a safe, supportive, and intellectually stimulating environment for students to thrive academically, personally, and spiritually.</p>
@@ -350,20 +359,40 @@
               <a class="btn" href="#/academics/curriculum" style="margin-left:10px">Explore Curriculum</a>
             </div>
           </div>
-          <!-- RIGHT: Promo video -->
           <div>
             <div class="video-frame">
-              <video
-                src="Videos/promo.mp4"
-                poster="Images/promo-poster.jpg"
-                controls
-                playsinline
-                style="width:100%; max-width:520px; border-radius:16px; box-shadow:0 4px 24px rgba(17,79,122,.08);"
-              ></video>
+              <video src="Images/promo.mp4" poster="Images/promo-poster.jpg" controls playsinline
+                     style="width:100%; max-width:520px; border-radius:16px; box-shadow:0 4px 24px rgba(17,79,122,.08);"></video>
             </div>
             <small style="display:block; color:var(--muted); margin-top:8px">Promo • 1–2 minutes • Campus & student life</small>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- HOME: Principal’s Message (summary) -->
+    <section id="home-principal" class="section">
+      <div class="container">
+        <h2>Principal’s Message</h2>
+        <article class="card">
+          <div class="principal-grid">
+            <div class="principal-msg">
+              <p>Education at Cusmaan Binu Cafaan Secondary School is more than information; it shapes character. Guided by the legacy of Uthman ibn Affan (Dhun-Nurayn), we strive to unite two lights: the enduring light of faith, ethics, and integrity, and the bright light of academic knowledge and inquiry.</p>
+              <p style="margin:18px 0 0 0"></p>
+              <p>With caring teachers and a strong partnership with families, we foster an environment that is intellectually challenging and spiritually nurturing. Our aim is resilient, compassionate, and wise young people—ready to excel in their studies and to live with purpose and service.</p>
+              <p style="margin:18px 0 0 0"></p>
+              <p>Each day, this vision appears in focused lessons, respectful conduct, and steady routines that help students grow. We invite you to read the full message to see how our “Two Lights” philosophy guides everything we do.</p>
+              <a class="btn primary" href="#/about/principal" aria-label="Read the full Principal’s Message" style="margin-top:22px; display:inline-block">Read full message →</a>
+            </div>
+
+            <figure class="portrait-sm">
+              <div class="avatar-circle">
+                <img src="Images/logo.jpg" alt="Portrait of the Principal" />
+              </div>
+              <figcaption>Ahmed Bihi Abdi — Principal</figcaption>
+            </figure>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -372,21 +401,9 @@
         <h2>Academics</h2>
         <p class="lead">A rigorous curriculum supported by caring teachers and clear pathways to success.</p>
         <div class="grid cards">
-          <article class="card">
-            <h3>Curriculum</h3>
-            <p>Balanced core subjects, rich electives, project-based learning, and Islamic studies.</p>
-            <div class="link-row"><a href="#/academics/curriculum">View curriculum →</a></div>
-          </article>
-          <article class="card">
-            <h3>Timetable</h3>
-            <p>Structured learning with time for labs, clubs, and tutorials.</p>
-            <div class="link-row"><a href="#/academics/timetable">View timetable →</a></div>
-          </article>
-          <article class="card">
-            <h3>Admissions</h3>
-            <p>Applications are open for the upcoming term. Scholarships available.</p>
-            <div class="link-row"><a href="#/academics/admissions">Apply now →</a></div>
-          </article>
+          <article class="card"><h3>Curriculum</h3><p>Balanced core subjects, rich electives, project-based learning, and Islamic studies.</p><div class="link-row"><a href="#/academics/curriculum">View curriculum →</a></div></article>
+          <article class="card"><h3>Timetable</h3><p>Structured learning with time for labs, clubs, and tutorials.</p><div class="link-row"><a href="#/academics/timetable">View timetable →</a></div></article>
+          <article class="card"><h3>Admissions</h3><p>Applications are open for the upcoming term. Scholarships available.</p><div class="link-row"><a href="#/academics/admissions">Apply now →</a></div></article>
         </div>
       </div>
     </section>
@@ -396,21 +413,9 @@
         <h2>School Life</h2>
         <p class="lead">From competitions to community service, learning thrives beyond the classroom.</p>
         <div class="grid cards">
-          <article class="card">
-            <h3>Events</h3>
-            <p>Assemblies, exhibitions, debates, field trips, and more across the year.</p>
-            <div class="link-row"><a href="#/school-life/events">See events →</a></div>
-          </article>
-          <article class="card">
-            <h3>Calendar</h3>
-            <p>Stay on top of academic dates, exams, and term breaks.</p>
-            <div class="link-row"><a href="#/school-life/calendar">Open calendar →</a></div>
-          </article>
-          <article class="card">
-            <h3>Gallery</h3>
-            <p>A look at learning in action and the spirit of our students.</p>
-            <div class="link-row"><a href="#/school-life/gallery">View gallery →</a></div>
-          </article>
+          <article class="card"><h3>Events</h3><p>Assemblies, exhibitions, debates, field trips, and more across the year.</p><div class="link-row"><a href="#/school-life/events">See events →</a></div></article>
+          <article class="card"><h3>Calendar</h3><p>Stay on top of academic dates, exams, and term breaks.</p><div class="link-row"><a href="#/school-life/calendar">Open calendar →</a></div></article>
+          <article class="card"><h3>Gallery</h3><p>A look at learning in action and the spirit of our students.</p><div class="link-row"><a href="#/school-life/gallery">View gallery →</a></div></article>
         </div>
       </div>
     </section>
@@ -420,18 +425,9 @@
         <h2>Jobs</h2>
         <p class="lead">Join our mission-driven faculty and staff.</p>
         <div class="grid cards">
-          <article class="card">
-            <h3>Mathematics Teacher</h3>
-            <p>Full-time • Main Campus • 2–5 years experience</p>
-          </article>
-          <article class="card">
-            <h3>English Teacher</h3>
-            <p>Full-time • Main Campus • 2–5 years experience</p>
-          </article>
-          <article class="card">
-            <h3>Lab Technician</h3>
-            <p>Part-time • Science Department • 1–3 years experience</p>
-          </article>
+          <article class="card"><h3>Mathematics Teacher</h3><p>Full-time • Main Campus • 2–5 years experience</p></article>
+          <article class="card"><h3>English Teacher</h3><p>Full-time • Main Campus • 2–5 years experience</p></article>
+          <article class="card"><h3>Lab Technician</h3><p>Part-time • Science Department • 1–3 years experience</p></article>
         </div>
         <div class="link-row"><a href="#/jobs">See all openings →</a></div>
       </div>
@@ -484,46 +480,25 @@
     </section>
   </div>
 
-  <!-- ABOUT (left two paragraphs + right promo video) -->
+  <!-- ABOUT -->
   <div data-route="about">
     <section class="section">
       <div class="container">
         <h2>About Us</h2>
-
         <div class="split-2col" style="margin-top:18px">
-          <!-- LEFT: Two simple paragraphs -->
           <div class="grid" style="gap:18px">
             <article class="card">
               <p>At Cusmaan Binu Cafaan Secondary School (Forms 1–4), learning is calm and purposeful. We use simple routines, clear goals, and caring teachers to guide every student. We work closely with families and build everyday habits—respect, responsibility, punctuality, and service—so students can focus and do their best.</p>
               <p>Lessons are practical and balanced. Students learn through practice, labs, projects, and regular feedback. They grow in English, Arabic, and Somali, and Qur’an/Islamic Studies shape good character each day. After class, clubs, competitions, and community service build confidence and leadership. By graduation, our students are exam-ready, skill-ready, and future-ready.</p>
             </article>
-
             <div class="link-row">
               <a class="btn primary" href="#/enroll">Enroll Now</a>
               <a class="btn" href="#/academics/curriculum" style="margin-left:10px">Explore Curriculum</a>
             </div>
           </div>
-
-          <!-- RIGHT: Promo video -->
           <div>
             <div class="video-frame">
-              <!-- Option A: Local/hosted MP4 -->
-              <video
-                src="Videos/promo.mp4"              <!-- replace with your path -->
-                poster="Images/promo-poster.jpg"    <!-- optional poster image -->
-                controls
-                playsinline
-              ></video>
-
-              <!-- Option B: YouTube embed (comment out the <video> above and use this iframe) -->
-              <!--
-              <iframe
-                src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
-                title="School Promo Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-              -->
+              <video src="Videos/promo.mp4" poster="Images/promo-poster.jpg" controls playsinline></video>
             </div>
             <small style="display:block; color:var(--muted); margin-top:8px">Promo • 1–2 minutes • Campus & student life</small>
           </div>
@@ -532,15 +507,40 @@
     </section>
   </div>
 
+  <!-- PRINCIPAL’S MESSAGE (full) -->
   <div data-route="about/principal">
-    <section class="section">
+    <section class="section principal-full" aria-labelledby="principal-title">
       <div class="container">
-        <h2>Principal’s Message</h2>
-        <p class="lead">“It is our privilege to partner with families to nurture disciplined minds and noble character.”</p>
-        <div class="card">
-          <p>Welcome to Cusmaan Binu Cafaan Secondary School. Our students grow through rigorous academics, faith, and service. We value curiosity, perseverance, and kindness. I invite you to visit our campus and meet our dedicated staff.</p>
-          <p style="margin-top:8px"><b>— The Principal</b></p>
-        </div>
+        <h2 id="principal-title" class="principal-title">A Message from the Principal</h2>
+        <p class="principal-lead">Welcome to Cusmaan Binu Cafaan Secondary School.</p>
+
+        <article class="principal-card" style="padding:32px 24px;">
+          <div style="display:grid; grid-template-columns:180px 1fr; gap:32px; align-items:start;">
+            <!-- Left: Principal's portrait -->
+            <figure style="margin:0; text-align:center;">
+              <div style="width:180px; aspect-ratio:1/1; border-radius:999px; overflow:hidden; border:4px solid #fff; box-shadow:0 10px 30px rgba(17,76,129,.10); background:#f8fafc; margin:0 auto 8px;">
+                <img src="Images/logo.jpg" alt="Portrait of Principal Ahmed Bihi Abdi" style="display:block; width:100%; height:100%; object-fit:cover; object-position:center;" />
+              </div>
+              <figcaption style="padding:6px 8px; font-size:15px; color:#6b7b8c;">Ahmed Bihi Abdi — Principal</figcaption>
+            </figure>
+            <!-- Right: Principal's message -->
+            <div class="message">
+              <p>It is with great pride and a profound sense of responsibility that I welcome you to the official portal of Cusmaan Binu Cafaan Secondary School.</p>
+              <p>At our institution, we believe that true education is not merely the acquisition of information, but the illumination of the soul and the cultivation of character. Our school is proudly named after the esteemed third Caliph, Uthman ibn Affan (Cusmaan Binu Cafaan), a leader known as Dhun-Nurayn — the Possessor of Two Lights. This noble title is the very cornerstone of our educational philosophy.</p>
+              <p>We are dedicated to nurturing students who are guided by these two lights: the eternal light of faith, ethics, and integrity, and the brilliant light of academic knowledge, critical inquiry, and worldly understanding. It is the perfect harmony of these two lights that creates a truly balanced and enlightened individual.</p>
+              <p>Education at Cusmaan Binu Cafaan Secondary School is more than information; it shapes character. Guided by the legacy of Uthman ibn Affan (Dhun-Nurayn), we strive to unite two lights: the enduring light of faith, ethics, and integrity, and the bright light of academic knowledge and inquiry.</p>
+              <p>With caring teachers and a strong partnership with families, we foster an environment that is intellectually challenging and spiritually nurturing. Our aim is resilient, compassionate, and wise young people—ready to excel in their studies and to live with purpose and service.</p>
+              <p>Our dedicated faculty is committed to fostering an environment that is both intellectually challenging and spiritually nurturing. We see education as a sacred trust and a collaborative partnership between the school, our students, and their families. Together, we work to develop resilient, compassionate, and wise young adults who are prepared not only to excel in their chosen fields but also to lead lives of purpose and service.</p>
+              <p>I warmly invite you to explore our community, to witness our commitment to excellence firsthand, and to discover how we are preparing the leaders of tomorrow for a future where they will not only succeed, but also serve and inspire.</p>
+              <div class="signature">
+                <div><strong>Ahmed Bihi Abdi</strong></div>
+                <div>Principal</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <a class="back" href="#home-principal" aria-label="Back to Home">← Back to Home</a>
       </div>
     </section>
   </div>
@@ -839,7 +839,7 @@ function showRoute(){
 window.addEventListener('hashchange', showRoute);
 window.addEventListener('load', showRoute);
 
-/* ---------- Smooth scroll for home “Explore” link (kept, no-op if missing) ---------- */
+/* ---------- Smooth scroll for home anchor links (e.g., Back to Home) ---------- */
 document.querySelectorAll('a[href^="#home-"]').forEach(a=>{
   a.addEventListener('click', e=>{
     const id = a.getAttribute('href').slice(1);
