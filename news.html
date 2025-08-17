@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>News & Announcements | Cusmaan Binu Cafaan Secondary School</title>
+<meta name="description" content="Stay up-to-date with the latest news, events, and achievements from the students and faculty at Cusmaan Binu Cafaan Secondary School." />
+<link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+<style>
+  /* --- BASE & UTILITY STYLES --- */
+  :root {
+    --primary: #114f7a; --primary-700: #0d3b60; --accent: #2e8b57;
+    --accent-700: #216845; --ink: #223f31; --muted: #6b7b8c;
+    --paper: #f6f8fb; --ring: rgba(17, 76, 129, .14);
+    --shadow: 0 10px 30px rgba(17, 76, 129, .10); --radius: 14px; --header-h: 74px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--ink); background: #fff; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  a { color: var(--primary); text-decoration: none; transition: all .2s; }
+  a:hover { color: var(--accent); }
+  h1, h2, h3, h4 { color: var(--primary-700); }
+  p { margin: 0 0 1rem 0; }
+  .lead { color: var(--muted); font-size: 1.1rem; }
+
+  /* --- HEADER & FOOTER --- */
+  .site-header { position: sticky; top: 0; height: var(--header-h); background: #fff; z-index: 1000; box-shadow: 0 2px 14px rgba(0,0,0,.04); }
+  .nav-row { height: 100%; display: flex; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .nav { margin-left: auto; display: flex; list-style: none; gap: 8px; padding: 0; }
+  .nav a { display: block; padding: 12px 14px; border-radius: 10px; color: var(--primary-700); font-weight: 600; font-size: 15px; }
+  .nav a.active, .nav a:hover { background: var(--paper); color: var(--primary); }
+  footer { margin-top: 64px; background: #0d3b60; color: #c7d7e6; padding: 28px 0; text-align: center; }
+  footer a { color: #cfe6ff; }
+  
+  /* --- VIEW MANAGEMENT --- */
+  .view { display: none; }
+  .view.active { display: block; animation: fadeIn .3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* --- NEWS LIST STYLES (MODIFIED for Text-Only) --- */
+  .page-header { text-align: center; padding-bottom: 24px; border-bottom: 1px solid #e0e6ec; margin-bottom: 32px; }
+  .article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  
+  /* CHANGED: Text-only card styles */
+  .article-card {
+    display: block;
+    background: #fff;
+    border: 1px solid #edf0f5;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    border-left: 4px solid var(--accent); /* NEW: Accent border for visual flair */
+  }
+  .article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(17, 76, 129, .12);
+    border-left-color: var(--primary-700);
+  }
+  .article-meta { font-size: 0.8rem; color: var(--muted); margin: 0 0 8px; }
+  .article-card h2 { font-size: 1.2rem; line-height: 1.3; margin: 0 0 8px; }
+  .article-card .excerpt { font-size: 0.9rem; margin-bottom: 1rem; color: var(--muted); }
+  .read-more-link { font-weight: 700; font-size: 0.9rem; color: var(--accent); }
+  
+  /* --- ARTICLE DETAIL STYLES (Image remains here) --- */
+  .article-detail-page { padding-top: 48px; line-height: 1.7; }
+  .article-header-image { width: 100%; height: 300px; background-color: #e0e6ec; border-radius: var(--radius); margin-bottom: 24px; }
+  .article-header-image img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+  .article-detail-page .article-meta { font-size: 0.9rem; color: var(--muted); }
+  .article-detail-page .article-meta strong { color: var(--primary-700); }
+  .article-detail-page .article-body { font-size: 1.1rem; }
+  .back-link { font-weight: 700; display: inline-block; margin-bottom: 24px; }
+  
+  /* --- RESPONSIVE ADJUSTMENTS --- */
+  @media (max-width: 960px) { .article-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .article-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-row">
+    <a href="index.html" class="brand" aria-label="School home"><img alt="School Logo" width="52" height="52" src="data:image/webp;base64,UklGRj0AAABXRUJQVlA4TBkAAAAvE8AAEJ8AP0nWgFvM0KJAAf8S4mJg1qgYwAAAPr8zv9PAAEAAABWUDhMFQAAADYkQAAAHrjnk7o/3qv0yq0T3oAAABJAAA..."></a>
+    <ul class="nav">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="academics.html">Academics</a></li><li><a href="#list" class="active">News</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div data-view="list" class="view">
+    <section class="container" style="padding-top: 48px; padding-bottom: 48px;">
+      <div class="page-header">
+        <h1>News & Announcements</h1>
+        <p class="lead">The latest updates, stories, and achievements from our school community.</p>
+      </div>
+      <div class="article-grid">
+        <a href="#science-fair" class="article-card">
+          <p class="article-meta">August 15, 2025</p>
+          <h2>Annual Science Fair Showcases Student Innovation</h2>
+          <p class="excerpt">Our campus was buzzing with excitement during the Annual Science Fair, where students presented remarkable projects.</p>
+          <span class="read-more-link">Read More →</span>
+        </a>
+        <a href="#debate-team" class="article-card">
+          <p class="article-meta">August 12, 2025</p>
+          <h2>Debate Team Wins Regional Championship</h2>
+          <p class="excerpt">Our talented debate team brought home the first-place trophy after weeks of rigorous preparation and competition.</p>
+          <span class="read-more-link">Read More →</span>
+        </a>
+        <a href="#somali-week" class="article-card">
+          <p class="article-meta">August 11, 2025</p>
+          <h2>School Celebrates Somali Language Week</h2>
+          <p class="excerpt">The week was filled with poetry, traditional stories, and events celebrating our rich language and heritage.</p>
+          <span class="read-more-link">Read More →</span>
+        </a>
+        <a href="#community-drive" class="article-card">
+          <p class="article-meta">August 5, 2025</p>
+          <h2>Students Lead Successful Community Clean-up</h2>
+          <p class="excerpt">Over 50 student volunteers participated in a service day, cleaning and beautifying local public spaces.</p>
+          <span class="read-more-link">Read More →</span>
+        </a>
+        <a href="#sports-day" class="article-card">
+          <p class="article-meta">July 28, 2025</p>
+          <h2>Blue House Triumphs at Annual Sports Day</h2>
+          <p class="excerpt">A day of thrilling competition and excellent sportsmanship concluded with Blue House being crowned the champions.</p>
+          <span class="read-more-link">Read More →</span>
+        </a>
+        <a href="#ptc-announcement" class="article-card">
+          <p class="article-meta">July 22, 2025</p>
+          <h2>Parent-Teacher Conferences Announced</h2>
+          <p class="excerpt">Parents are invited to discuss student progress for the first term during our upcoming conference week.</p>
+          <span class="read-more-link">Read More →</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <div data-view="science-fair" class="view article-detail-page">
+    <section class="container" style="max-width: 800px;">
+      <a href="#list" class="back-link">← Back to All News</a>
+      <div class="article-header-image"><img src="Images/school-campus.jpg" alt="A detailed photo of a student's science project"></div>
+      <p class="article-meta">Posted on <strong>August 15, 2025</strong></p>
+      <h1>Annual Science Fair Showcases Student Innovation</h1>
+      <div class="article-body">
+        <p>The school grounds were buzzing with excitement last Friday for our Annual Science Fair. Students from all forms presented a wide array of remarkable projects, demonstrating months of hard work, research, and ingenuity. The event was a testament to our commitment to fostering scientific inquiry and critical thinking.</p>
+        <p>Projects ranged from detailed models of renewable energy systems for Hargeisa to impressive studies on local biodiversity and water conservation techniques. A panel of judges, including teachers and local university science faculty, were thoroughly impressed with the quality and depth of the students' work.</p>
+      </div>
+    </section>
+  </div>
+
+  <div data-view="debate-team" class="view article-detail-page">
+    <section class="container" style="max-width: 800px;">
+      <a href="#list" class="back-link">← Back to All News</a>
+      <div class="article-header-image"><img src="Images/school-campus.jpg" alt="The debate team posing together with their trophy"></div>
+      <p class="article-meta">Posted on <strong>August 12, 2025</strong></p>
+      <h1>Debate Team Wins Regional Championship</h1>
+      <div class="article-body">
+        <p>We are incredibly proud to announce that the Cusmaan Binu Cafaan Debate Team has won the first-place trophy at the Hargeisa Regional Debate Championship. After weeks of rigorous preparation and several rounds of intense competition against sixteen other schools, our team emerged victorious.</p>
+        <p>The final debate centered on the topic of sustainable urban development in the Horn of Africa. Our students presented well-researched arguments with clarity, confidence, and respect for their opponents, earning high praise from the judges.</p>
+      </div>
+    </section>
+  </div>
+  
+  <div data-view="somali-week" class="view article-detail-page">
+      <section class="container" style="max-width: 800px;">
+        <a href="#list" class="back-link">← Back to All News</a>
+        <div class="article-header-image"><img src="Images/school-campus.jpg" alt="A display of traditional Somali crafts and food"></div>
+        <p class="article-meta">Posted on <strong>August 11, 2025</strong></p>
+        <h1>School Celebrates Somali Language and Culture Week</h1>
+        <div class="article-body">
+            <p>Last week, our school hosted a vibrant and educational Somali Language and Culture Week. The event was dedicated to celebrating our rich heritage, language, and traditions. Throughout the week, students participated in various activities, including poetry recitations (gabay), traditional storytelling sessions, and a cultural dress day.</p>
+            <p>Special assemblies featured guest speakers who spoke on the importance of preserving the Somali language for future generations. The celebration concluded with a showcase of traditional food and crafts, prepared and presented by students and their families. It was a wonderful opportunity for our community to connect with its roots and share our culture with pride.</p>
+        </div>
+      </section>
+  </div>
+
+  <div data-view="community-drive" class="view article-detail-page">
+    <section class="container" style="max-width: 800px;">
+      <a href="#list" class="back-link">← Back to All News</a>
+      <div class="article-header-image"><img src="Images/school-campus.jpg" alt="Students planting a tree in a public space"></div>
+      <p class="article-meta">Posted on <strong>August 5, 2025</strong></p>
+      <h1>Students Lead Successful Community Clean-up Drive</h1>
+      <div class="article-body">
+        <p>Embodying our school's values of service and civic responsibility, over 50 student volunteers from all forms dedicated their Saturday to a community clean-up drive. Organized by the Student Council, the event focused on beautifying public parks and streets in our local neighborhood.</p>
+        <p>Armed with gloves and bags, students worked enthusiastically to collect litter, clear overgrown weeds, and plant new saplings in designated areas. The initiative was met with appreciation from local residents, many of whom came out to thank the students for their hard work.</p>
+      </div>
+    </section>
+  </div>
+  
+  <div data-view="sports-day" class="view article-detail-page">
+    <section class="container" style="max-width: 800px;">
+      <a href="#list" class="back-link">← Back to All News</a>
+      <div class="article-header-image"><img src="Images/school-campus.jpg" alt="The winning house captains holding the sports day trophy"></div>
+      <p class="article-meta">Posted on <strong>July 28, 2025</strong></p>
+      <h1>Blue House Triumphs at Annual Sports Day</h1>
+      <div class="article-body">
+        <p>Our Annual Sports Day was held last week under clear skies, filled with thrilling competition and a wonderful display of school spirit. Students participated in a wide range of track and field events, showcasing their athletic talents and teamwork.</p>
+        <p>After a full day of impressive performances, Blue House accumulated the most points to win the championship trophy. The day concluded with a ceremony where medals were awarded to individual winners and the house captains of Blue House proudly accepted the overall prize.</p>
+      </div>
+    </section>
+  </div>
+    
+  <div data-view="ptc-announcement" class="view article-detail-page">
+      <section class="container" style="max-width: 800px;">
+        <a href="#list" class="back-link">← Back to All News</a>
+        <div class="article-header-image"><img src="Images/school-campus.jpg" alt="A welcoming sign for parents at the school entrance"></div>
+        <p class="article-meta">Posted on <strong>July 22, 2025</strong></p>
+        <h1>Parent-Teacher Conferences Announced for First Term</h1>
+        <div class="article-body">
+            <p>We would like to inform all parents and guardians that the Parent-Teacher Conferences for the first term have been scheduled for the first week of September. This is an important opportunity to discuss your child's academic progress, classroom conduct, and overall development with their teachers.</p>
+            <p>A detailed schedule and instructions for booking appointments will be sent home with students next week. We strongly encourage all parents to attend to ensure a strong partnership between home and school in supporting our students' success. We look forward to seeing you there.</p>
+        </div>
+      </section>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Cusmaan Binu Cafaan Secondary School. All rights reserved. | <a href="contact.html">Contact Us</a></p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const allViews = document.querySelectorAll('.view');
+    function showView() {
+      let viewId = window.location.hash.substring(1) || 'list';
+      const targetView = document.querySelector(`.view[data-view="${viewId}"]`);
+      if (!targetView) { viewId = 'list'; }
+      allViews.forEach(view => {
+        if (view.dataset.view === viewId) { view.classList.add('active'); } 
+        else { view.classList.remove('active'); }
+      });
+      window.scrollTo(0, 0);
+    }
+    window.addEventListener('hashchange', showView);
+    showView();
+  });
+</script>
+
+</body>
+</html>
