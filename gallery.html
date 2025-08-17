@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gallery | Cusmaan Binu Cafaan Secondary School</title>
+<meta name="description" content="Explore photos of our campus, student life, academic events, and more at Cusmaan Binu Cafaan Secondary School." />
+<link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+<style>
+  /* --- BASE & UTILITY STYLES --- */
+  :root {
+    --primary: #114f7a; --primary-700: #0d3b60; --accent: #2e8b57;
+    --accent-700: #216845; --ink: #223f31; --muted: #6b7b8c;
+    --paper: #f6f8fb; --ring: rgba(17, 76, 129, .14);
+    --shadow: 0 10px 30px rgba(17, 76, 129, .10); --radius: 14px; --header-h: 74px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--ink); background: #fff; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  a { color: var(--primary); text-decoration: none; transition: all .2s; }
+  h1 { color: var(--primary-700); }
+  .lead { color: var(--muted); font-size: 1.1rem; }
+
+  /* --- HEADER & FOOTER --- */
+  .site-header { position: sticky; top: 0; height: var(--header-h); background: #fff; z-index: 1000; box-shadow: 0 2px 14px rgba(0,0,0,.04); }
+  .nav-row { height: 100%; display: flex; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .nav { margin-left: auto; display: flex; list-style: none; gap: 8px; padding: 0; }
+  .nav a { display: block; padding: 12px 14px; border-radius: 10px; color: var(--primary-700); font-weight: 600; font-size: 15px; }
+  .nav a.active, .nav a:hover { background: var(--paper); color: var(--primary); }
+  footer { margin-top: 64px; background: #0d3b60; color: #c7d7e6; padding: 28px 0; text-align: center; }
+  footer a { color: #cfe6ff; }
+
+  /* --- GALLERY STYLES --- */
+  .page-header { text-align: center; padding-bottom: 24px; margin-bottom: 32px; }
+  .filter-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+  .filter-btn { background: #fff; border: 1px solid #e0e6ec; border-radius: 999px; padding: 8px 20px; font-weight: 600; color: var(--primary-700); cursor: pointer; transition: all .2s; }
+  .filter-btn:hover { background-color: var(--paper); }
+  .filter-btn.active { background-color: var(--accent); color: #fff; border-color: var(--accent); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .gallery-item { display: block; aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden; position: relative; box-shadow: var(--shadow); }
+  .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(17, 76, 129, .2); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-item::after { content: ''; position: absolute; inset: 0; background-color: rgba(13, 59, 96, 0.5); transition: opacity .3s ease; z-index: 1; opacity: 0; }
+  .gallery-item:hover::after { opacity: 1; }
+
+  /* --- LIGHTBOX STYLES (CORRECTED) --- */
+  .lightbox-overlay { position: fixed; inset: 0; background-color: rgba(13, 59, 96, 0.9); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: all .3s ease; }
+  .lightbox-overlay.show { opacity: 1; visibility: visible; }
+  
+  .lightbox-content {
+    position: relative;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-content img {
+    max-width: 70vw; /* Smaller lightbox width */
+    max-height: 75vh; /* Smaller lightbox height */
+    width: auto;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  }
+  .lightbox-caption { color: #fff; text-align: center; margin-top: 12px; font-weight: 500; }
+  
+  /* Buttons positioned relative to the entire overlay for better control */
+  .lightbox-close, .lightbox-prev, .lightbox-next {
+    position: fixed; /* Changed to fixed for positioning against viewport */
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    z-index: 2001;
+  }
+  .lightbox-close { top: 20px; right: 20px; }
+  .lightbox-prev, .lightbox-next { top: 50%; transform: translateY(-50%); }
+  .lightbox-prev { left: 20px; }
+  .lightbox-next { right: 20px; }
+
+  /* --- RESPONSIVE ADJUSTMENTS --- */
+  @media (max-width: 960px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .gallery-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) {
+    .lightbox-content img { max-width: 90vw; max-height: 75vh; }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+    .lightbox-close { top: 10px; right: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-row">
+        <a href="index.html" class="brand" aria-label="School home"><img alt="School Logo" width="52" height="52" src="data:image/webp;base64,UklGRj0AAABXRUJQVlA4TBkAAAAvE8AAEJ8AP0nWgFvM0KJAAf8S4mJg1qgYwAAAPr8zv9PAAEAAABWUDhMFQAAADYkQAAAHrjnk7o/3qv0yq0T3oAAABJAAA..."></a>
+        <ul class="nav">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="news.html">News</a></li><li><a href="gallery.html" class="active">Gallery</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <section class="container" style="padding-top: 48px; padding-bottom: 48px;">
+        <div class="page-header">
+            <h1>Our School Gallery</h1>
+            <p class="lead">A glimpse into the vibrant life at Cusmaan Binu Cafaan Secondary School.</p>
+        </div>
+
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="campus">Campus & Facilities</button>
+            <button class="filter-btn" data-filter="student-life">Student Life</button>
+            <button class="filter-btn" data-filter="academics">Academics</button>
+            <button class="filter-btn" data-filter="events">Events</button>
+        </div>
+
+        <div class="gallery-grid">
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="events">
+                <img src="Images/school-campus.jpg" alt="A student presenting their winning project at the Science Fair">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="events">
+                <img src="Images/school-campus.jpg" alt="Graduates tossing their caps in the air in celebration">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="campus">
+                <img src="Images/school-campus.jpg" alt="The main school building on a sunny day">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="academics">
+                <img src="Images/school-campus.jpg" alt="A science class conducting an experiment in the lab">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="student-life">
+                <img src="Images/school-campus.jpg" alt="Students collaborating on a project in the library">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="campus">
+                <img src="Images/school-campus.jpg" alt="The school library filled with books">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="events">
+                <img src="Images/school-campus.jpg" alt="The debate team with their regional championship trophy">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="student-life">
+                <img src="Images/school-campus.jpg" alt="Students talking and laughing in the schoolyard during a break">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="academics">
+                <img src="Images/school-campus.jpg" alt="A teacher explaining a math problem on the blackboard">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="events">
+                <img src="Images/school-campus.jpg" alt="Blue House celebrating their win on Sports Day">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="campus">
+                <img src="Images/school-campus.jpg" alt="The modern computer lab with students working">
+            </a>
+            <a href="Images/school-campus.jpg" class="gallery-item" data-category="student-life">
+                <img src="Images/school-campus.jpg" alt="Students playing basketball in the yard">
+            </a>
+        </div>
+    </section>
+</main>
+
+<div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-content">
+        <img src="" id="lightbox-image" alt="Full-size gallery image">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-close" id="lightbox-close" title="Close">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev" title="Previous">‹</button>
+    <button class="lightbox-next" id="lightbox-next" title="Next">›</button>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Cusmaan Binu Cafaan Secondary School. All rights reserved. | <a href="contact.html">Contact Us</a></p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- FILTERING LOGIC ---
+        const filterControls = document.querySelector('.filter-controls');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        if (filterControls) {
+            filterControls.addEventListener('click', function(e) {
+                if (e.target.classList.contains('filter-btn')) {
+                    filterControls.querySelector('.active').classList.remove('active');
+                    e.target.classList.add('active');
+                    const filterValue = e.target.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        }
+
+        // --- LIGHTBOX LOGIC ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+
+        let currentIndex = 0;
+        let visibleItems = [];
+
+        function updateVisibleItems() {
+            visibleItems = [];
+            galleryItems.forEach(item => {
+                if (item.style.display !== 'none') {
+                    visibleItems.push(item);
+                }
+            });
+        }
+
+        function showLightbox(index) {
+            if (index < 0 || index >= visibleItems.length) return;
+            currentIndex = index;
+            const item = visibleItems[currentIndex];
+            const imageSrc = item.getAttribute('href');
+            const imageCaption = item.querySelector('img').getAttribute('alt');
+
+            lightboxImage.setAttribute('src', imageSrc);
+            lightboxCaption.textContent = imageCaption;
+            lightbox.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function showNext() {
+            const nextIndex = (currentIndex + 1) % visibleItems.length;
+            showLightbox(nextIndex);
+        }
+
+        function showPrev() {
+            const prevIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+            showLightbox(prevIndex);
+        }
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                updateVisibleItems();
+                const itemIndex = visibleItems.indexOf(item);
+                showLightbox(itemIndex);
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { 
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        lightboxNext.addEventListener('click', showNext);
+        lightboxPrev.addEventListener('click', showPrev);
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('show')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') showNext();
+                if (e.key === 'ArrowLeft') showPrev();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

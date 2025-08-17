@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact Us | Cusmaan Binu Cafaan Secondary School</title>
+<meta name="description" content="Get in touch with Cusmaan Binu Cafaan Secondary School. Find our address, phone, email, and office hours, or send us a message through our contact form." />
+<link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+<style>
+  /* --- BASE & UTILITY STYLES --- */
+  :root {
+    --primary: #114f7a; --primary-700: #0d3b60; --accent: #2e8b57;
+    --accent-700: #216845; --ink: #223f31; --muted: #6b7b8c;
+    --paper: #f6f8fb; --ring: rgba(17, 76, 129, .14);
+    --shadow: 0 10px 30px rgba(17, 76, 129, .10); --radius: 14px; --header-h: 74px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--ink); background: var(--paper); line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  a { color: var(--primary); text-decoration: none; transition: all .2s; }
+  a:hover { color: var(--accent); }
+  h1, h2, h3 { color: var(--primary-700); }
+  .lead { color: var(--muted); font-size: 1.1rem; }
+
+  /* --- HEADER & FOOTER --- */
+  .site-header { position: sticky; top: 0; height: var(--header-h); background: #fff; z-index: 1000; box-shadow: 0 2px 14px rgba(0,0,0,.04); }
+  .nav-row { height: 100%; display: flex; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .nav { margin-left: auto; display: flex; list-style: none; gap: 8px; padding: 0; }
+  .nav a { display: block; padding: 12px 14px; border-radius: 10px; color: var(--primary-700); font-weight: 600; font-size: 15px; }
+  .nav a.active, .nav a:hover { background: var(--paper); color: var(--primary); }
+  footer { margin-top: 64px; background: #0d3b60; color: #c7d7e6; padding: 28px 0; text-align: center; }
+  footer a { color: #cfe6ff; }
+  
+  /* --- CONTACT PAGE STYLES --- */
+  .page-header { text-align: center; margin-bottom: 32px; }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .contact-card {
+    background: #fff;
+    padding: 24px;
+    border-radius: var(--radius);
+    border: 1px solid #e0e6ec;
+    box-shadow: var(--shadow);
+  }
+  
+  /* Form Styles */
+  .contact-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+  }
+  .contact-form .form-group {
+    margin-bottom: 16px;
+  }
+  .contact-form .input-field {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d9e4;
+    font-size: 1rem;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .contact-form .input-field:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--ring);
+  }
+  .contact-form .submit-btn {
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .2s;
+  }
+  .contact-form .submit-btn:hover {
+    background-color: var(--accent-700);
+  }
+
+  /* Details List Styles */
+  .contact-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .contact-details li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .contact-details .icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    margin-top: 4px;
+    color: var(--accent);
+  }
+  .contact-details strong {
+    display: block;
+    color: var(--primary-700);
+  }
+  .map-container {
+    margin-top: 24px;
+    aspect-ratio: 16/9;
+    background-color: #e0e6ec;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 900px) {
+    .contact-layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-row">
+        <a href="index.html" class="brand" aria-label="School home"><img alt="School Logo" width="52" height="52" src="data:image/webp;base64,UklGRj0AAABXRUJQVlA4TBkAAAAvE8AAEJ8AP0nWgFvM0KJAAf8S4mJg1qgYwAAAPr8zv9PAAEAAABWUDhMFQAAADYkQAAAHrjnk7o/3qv0yq0T3oAAABJAAA..."></a>
+        <ul class="nav">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="news.html">News</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <section class="container" style="padding-top: 48px; padding-bottom: 48px;">
+        <div class="page-header">
+            <h1>Get in Touch</h1>
+            <p class="lead">We're here to help. Contact us with any questions or inquiries.</p>
+        </div>
+
+        <div class="contact-layout">
+
+            <div class="contact-card contact-form">
+                <h3>Send Us a Message</h3>
+                <form onsubmit="alert('Thank you for your message. We will get back to you shortly!'); return false;">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" class="input-field" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="contact-card contact-details">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <div>
+                            <strong>Address</strong>
+                            <span>Main Campus, Hargeisa, Somaliland</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon">
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <div>
+                            <strong>Phone</strong>
+                            <span>+252 63 123 4567</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <div>
+                            <strong>Email Address</strong>
+                            <span>info@cusmaancafaan.edu</span>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <div>
+                            <strong>Office Hours</strong>
+                            <span>Saturday – Thursday: 7:30 AM – 1:00 PM</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="map-container">
+                    <span>Map of School Location</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Cusmaan Binu Cafaan Secondary School. All rights reserved. | <a href="contact.html">Contact Us</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

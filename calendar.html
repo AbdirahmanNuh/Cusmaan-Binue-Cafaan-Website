@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Term 1 Calendar | Cusmaan Binu Cafaan Secondary School</title>
+<meta name="description" content="View the official Term 1 academic calendar for Cusmaan Binu Cafaan Secondary School (September - December 2025)." />
+<link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+<style>
+  /* --- BASE & UTILITY STYLES --- */
+  :root {
+    --primary: #114f7a; --primary-700: #0d3b60; --accent: #2e8b57;
+    --accent-700: #216845; --ink: #223f31; --muted: #6b7b8c;
+    --paper: #f6f8fb; --ring: rgba(17, 76, 129, .14);
+    --shadow: 0 10px 30px rgba(17, 76, 129, .10); --radius: 14px; --header-h: 74px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--ink); background: var(--paper); line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  a { color: var(--primary); text-decoration: none; transition: all .2s; }
+  a:hover { color: var(--accent); }
+  h1, h2, h3 { color: var(--primary-700); }
+  .lead { color: var(--muted); font-size: 1.1rem; }
+
+  /* --- HEADER & FOOTER --- */
+  .site-header { position: sticky; top: 0; height: var(--header-h); background: #fff; z-index: 1000; box-shadow: 0 2px 14px rgba(0,0,0,.04); }
+  .nav-row { height: 100%; display: flex; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .nav { margin-left: auto; display: flex; list-style: none; gap: 8px; padding: 0; }
+  .nav a { display: block; padding: 12px 14px; border-radius: 10px; color: var(--primary-700); font-weight: 600; font-size: 15px; }
+  .nav a.active, .nav a:hover { background: var(--paper); color: var(--primary); }
+  footer { margin-top: 64px; background: #0d3b60; color: #c7d7e6; padding: 28px 0; text-align: center; }
+  footer a { color: #cfe6ff; }
+  
+  /* --- 3-COLUMN CALENDAR TABLE STYLES --- */
+  .page-header { text-align: center; margin-bottom: 32px; }
+  
+  .calendar-wrapper {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden; /* Ensures border-radius is respected by the table */
+  }
+  .calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .calendar-table thead {
+    text-align: left;
+    background-color: var(--paper);
+  }
+  .calendar-table th, .calendar-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e8eef5;
+  }
+  .calendar-table th {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .calendar-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .calendar-table .date-cell {
+    width: 25%;
+    font-weight: 600;
+    color: var(--primary-700);
+    white-space: nowrap;
+  }
+  .calendar-table .event-cell {
+    width: 35%;
+    font-weight: 600;
+  }
+  .calendar-table .details-cell {
+    width: 40%;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  /* Responsive Table Styles */
+  @media (max-width: 768px) {
+    .calendar-table thead {
+      display: none;
+    }
+    .calendar-table tr {
+      display: block;
+      border-bottom: 2px solid var(--accent);
+      padding: 16px 0;
+    }
+    .calendar-table tr:last-child {
+        border-bottom: none;
+    }
+    .calendar-table td {
+      display: block;
+      text-align: right;
+      border-bottom: 1px dashed #e8eef5;
+      position: relative;
+      padding-left: 50%;
+    }
+    .calendar-table td:last-child {
+        border-bottom: none;
+    }
+    .calendar-table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 16px;
+      font-weight: 600;
+      color: var(--primary-700);
+      text-align: left;
+    }
+    .calendar-table .date-cell, 
+    .calendar-table .event-cell, 
+    .calendar-table .details-cell {
+        width: 100%;
+        white-space: normal;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-row">
+        <a href="index.html" class="brand" aria-label="School home"><img alt="School Logo" width="52" height="52" src="data:image/webp;base64,UklGRjOAAABXRUJQVlA4TBcAAAAvE8AAEJ8AP0nWgFvM0KJAAf8S4mJg1qgYwAAAPr8zv9PAAEAAABWUDhMFQAAADYkQAAAHrjnk7o/3qv0yq0T3oAAABJAAA..."></a>
+        <ul class="nav">
+            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="news.html">News</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="calendar.html" class="active">Calendar</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <section class="container" style="max-width: 1024px; padding-top: 48px; padding-bottom: 48px;">
+        <div class="page-header">
+            <h1>Academic Calendar: Term 1</h1>
+            <p class="lead">Key dates for September – December 2025.</p>
+        </div>
+
+        <div class="calendar-wrapper">
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Date" class="date-cell">September 1, 2025</td>
+                        <td data-label="Event" class="event-cell">First Day of Term 1</td>
+                        <td data-label="Details" class="details-cell">Welcome back to all students.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Date" class="date-cell">October 15 - 18, 2025</td>
+                        <td data-label="Event" class="event-cell">Mid-Term Examinations</td>
+                        <td data-label="Details" class="details-cell">Exams for all forms covering the first half of the term.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Date" class="date-cell">October 29, 2025</td>
+                        <td data-label="Event" class="event-cell">Parent-Teacher Conferences</td>
+                        <td data-label="Details" class="details-cell">An opportunity to discuss student progress with teachers.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Date" class="date-cell">December 10 - 14, 2025</td>
+                        <td data-label="Event" class="event-cell">Term 1 Final Examinations</td>
+                        <td data-label="Details" class="details-cell">Final exams for all subjects.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Date" class="date-cell">December 20, 2025</td>
+                        <td data-label="Event" class="event-cell">End of Term 1 / Winter Break</td>
+                        <td data-label="Details" class="details-cell">School closes for the winter break.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Cusmaan Binu Cafaan Secondary School. All rights reserved. | <a href="contact.html">Contact Us</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
