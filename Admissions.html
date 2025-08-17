@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admissions — Cusmaan Binu Cafaan Secondary School</title>
+<meta name="description" content="A very simple admissions page with a clear 4-step diagram of the procedure." />
+<style>
+  :root{
+    --primary:#114f7a;
+    --primary-700:#0d3b60;
+    --accent:#2e8b57;
+    --accent-700:#216845;
+    --ink:#22313f;
+    --muted:#6b7b8c;
+    --paper:#f6f8fb;
+    --ring:#e6edf5;
+    --radius:14px;
+    --shadow:0 10px 30px rgba(17,76,129,.10);
+    --container: 940px;
+  }
+
+  /* Base */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif;
+    color:var(--ink);
+    background:#fff;
+    line-height:1.65;
+  }
+  a{color:var(--primary); text-decoration:none}
+  a:hover{color:var(--accent)}
+  .container{max-width:var(--container); margin:0 auto; padding:0 20px}
+
+  /* Header (minimal) */
+  header{position:sticky; top:0; background:#fff; border-bottom:1px solid var(--ring); z-index:10}
+  .row{min-height:66px; display:flex; align-items:center; justify-content:space-between}
+  .brand{display:flex; align-items:center; gap:10px; color:var(--primary-700); font-weight:800}
+  .brand small{color:var(--muted); font-weight:600}
+  .back{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 14px; border-radius:10px; border:1px solid var(--ring);
+    color:var(--primary-700); background:#fff; font-weight:700;
+  }
+  .back:hover{border-color:var(--primary)}
+
+  /* Title */
+  .mast{padding:28px 0 10px}
+  h1{margin:0 0 6px; font-size:clamp(24px,3vw,34px); color:var(--primary-700)}
+  .lead{margin:0; color:var(--muted); font-size:clamp(15px,1.6vw,17px)}
+
+  /* Card */
+  .card{
+    background:#fff; border:1px solid var(--ring); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:18px;
+  }
+
+  /* Flow diagram — desktop: horizontal, mobile: vertical */
+  .flow{
+    position:relative; background:#fff; border:1px solid var(--ring);
+    border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);
+  }
+
+  /* Horizontal */
+  .flow.h{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:12px; align-items:flex-start;
+    padding-top:32px; padding-bottom:10px;
+  }
+  .flow.h::before{
+    content:""; position:absolute; left:40px; right:40px; top:44px; height:2px; background:var(--ring);
+  }
+  .step{display:grid; justify-items:center; text-align:center; gap:8px}
+  .node{
+    width:48px; height:48px; display:grid; place-items:center; border-radius:999px;
+    background:var(--paper); border:2px solid var(--accent); color:var(--accent); font-weight:800;
+    box-shadow:0 4px 16px rgba(0,0,0,.05);
+  }
+  .title{font-weight:800; color:var(--primary-700)}
+  .desc{margin:0; color:#334155; font-size:14px}
+
+  /* Mobile (vertical timeline) */
+  @media (max-width:720px){
+    .flow.h{display:none}
+    .flow.v{display:block; padding-left:22px}
+    .flow.v::before{
+      content:""; position:absolute; top:26px; bottom:26px; left:34px; width:2px; background:var(--ring);
+    }
+    .v .step{
+      position:relative; display:grid; grid-template-columns:64px 1fr; gap:10px; align-items:center; text-align:left;
+      padding:10px 0;
+    }
+    .v .node{grid-row:1 / span 2; margin-left:-10px}
+    .v .title{margin:0}
+    .v .desc{margin:0}
+  }
+
+  /* Actions & footnotes */
+  .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid var(--ring);
+    background:#fff; color:var(--primary-700); font-weight:800; cursor:pointer;
+  }
+  .btn.primary{background:var(--accent); color:#fff; border-color:transparent}
+  .btn.primary:hover{background:var(--accent-700)}
+  .note{
+    margin-top:12px; background:var(--paper); border:1px solid var(--ring);
+    border-radius:12px; padding:12px; color:#334155; font-size:14px
+  }
+
+  footer{margin-top:28px; border-top:1px solid var(--ring); padding:16px 0 30px; color:var(--muted); font-size:14px}
+
+  /* Print */
+  @media print{
+    header, .actions, footer{display:none !important}
+    .card, .flow{box-shadow:none}
+    body{background:#fff}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container row">
+    <div class="brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M3 10l9-6 9 6-9 6-9-6z"/><path d="M21 10v6"/><path d="M3 10v6"/><path d="M12 16v6"/>
+      </svg>
+      Cusmaan Binu Cafaan <small>Secondary School</small>
+    </div>
+    <a href="index.html#/academics/admissions" class="back" aria-label="Back to site">← Back</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="mast">
+      <h1>Admissions — Step by Step</h1>
+      <p class="lead">A simple, four-step path from inquiry to acceptance.</p>
+    </div>
+
+    <!-- Flow diagram (desktop) -->
+    <div class="flow h" aria-label="Admission procedure">
+      <div class="step">
+        <div class="node" aria-hidden="true">1</div>
+        <div class="title">Inquiry</div>
+        <p class="desc">Contact us to learn about our programs and ask questions.</p>
+      </div>
+      <div class="step">
+        <div class="node" aria-hidden="true">2</div>
+        <div class="title">School Tour</div>
+        <p class="desc">Schedule a visit to experience our environment and meet teachers.</p>
+      </div>
+      <div class="step">
+        <div class="node" aria-hidden="true">3</div>
+        <div class="title">Application</div>
+        <p class="desc">Complete the registration form and submit required documents.</p>
+      </div>
+      <div class="step">
+        <div class="node" aria-hidden="true">4</div>
+        <div class="title">Acceptance</div>
+        <p class="desc">Receive guidance on onboarding after a successful assessment.</p>
+      </div>
+    </div>
+
+    <!-- Flow diagram (mobile) -->
+    <div class="flow v" aria-hidden="true" style="display:none">
+      <div class="step">
+        <div class="node">1</div>
+        <div class="title">Inquiry</div>
+        <p class="desc">Contact us to learn about our programs and ask questions.</p>
+      </div>
+      <div class="step">
+        <div class="node">2</div>
+        <div class="title">School Tour</div>
+        <p class="desc">Schedule a visit to experience our environment and meet teachers.</p>
+      </div>
+      <div class="step">
+        <div class="node">3</div>
+        <div class="title">Application</div>
+        <p class="desc">Complete the registration form and submit required documents.</p>
+      </div>
+      <div class="step">
+        <div class="node">4</div>
+        <div class="title">Acceptance</div>
+        <p class="desc">Receive guidance on onboarding after a successful assessment.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2 style="margin:0 0 8px">Ready to begin?</h2>
+      <p class="desc" style="margin:0">We review applications weekly and will contact you within 2 business days.</p>
+      <div class="actions">
+        <a class="btn primary" href="index.html#/enroll">Start Your Application</a>
+        <a class="btn" href="index.html#/contact">Contact Admissions</a>
+      </div>
+      <div class="note"><b>Helpful to have:</b> recent report card, student ID/birth certificate, and parent contact details.</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">© <span id="year"></span> Cusmaan Binu Cafaan Secondary School</div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Swap flow diagram based on screen width (keeps DOM light & simple)
+  function toggleFlow(){
+    const mobile = window.matchMedia('(max-width: 720px)').matches;
+    document.querySelector('.flow.h').style.display = mobile ? 'none' : 'grid';
+    document.querySelector('.flow.v').style.display = mobile ? 'block' : 'none';
+  }
+  toggleFlow();
+  window.addEventListener('resize', toggleFlow);
+</script>
+
+</body>
+</html>
