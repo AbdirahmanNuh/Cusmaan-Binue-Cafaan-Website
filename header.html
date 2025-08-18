@@ -1,83 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cusman Binu Cafan Secondary School</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Standalone Header Component</title>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+<style>
+  /* ========================================
+    CSS for the Standalone Header Component
+    ========================================
+  */
+
+  /* Variables & Basic Setup */
+  :root{
+    --primary:#114f7a;
+    --primary-700:#0d3b60;
+    --accent:#2e8b57;
+    --accent-700:#216845;
+    --ink:#22313f;
+    --muted:#6b7b8c;
+    --paper:#f6f8fb;
+    --ring:rgba(17,76,129,.14);
+    --shadow:0 10px 30px rgba(17,76,129,.10);
+    --radius:14px;
+    --header-h:74px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    color:var(--ink);
+    background:#fff;
+    line-height:1.6;
+  }
+  a{color:var(--primary); text-decoration:none}
+  a:hover{color:var(--accent)}
+  img{max-width:100%; display:block}
+  .container{max-width:1200px; margin:0 auto; padding:0 20px}
+
+  /* Header Styles */
+  .site-header{
+    position:fixed; inset:0 0 auto 0; height:var(--header-h);
+    background:rgba(255, 255, 255, 0.85);
+    backdrop-filter:saturate(180%) blur(10px);
+    z-index:1000; box-shadow:0 2px 14px rgba(0,0,0,.04);
+  }
+  .nav-row{height:100%; display:flex; align-items:center; gap:20px}
+  .brand{display:flex; align-items:center; gap:14px; white-space:nowrap; font-weight:700; color:var(--primary-700)}
+  .brand-title {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .brand-title small {
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  @media (max-width: 480px) {
+    .brand-title {
+      display: none;
+    }
+  }
+
+  /* Desktop Navigation */
+  .nav{margin-left:auto; display:flex; align-items:center; gap:8px}
+  .nav > li{list-style:none; position:relative}
+  .nav > li > a, .nav > li > button{
+    border:0; background:none; cursor:pointer;
+    padding:12px 14px; border-radius:10px; color:var(--primary-700);
+    font-weight:600; font-size:15px;
+    display: flex; /* Ensures button content aligns */
+    align-items: center;
+  }
+  .nav > li > a.active, .nav > li > button.active,
+  .nav > li > a:hover, .nav > li > button:hover{background:var(--paper); color:var(--primary)}
+  .cta{background:var(--accent); color:#fff !important; box-shadow:var(--shadow)}
+  .cta:hover{background:var(--accent-700)}
+  
+  .chev{width:16px; height:16px; margin-left:6px; vertical-align:-2px; transition: transform 0.2s ease;}
+  .nav > li.open .chev {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown Menu */
+  .dropdown{
+    position:absolute; top:100%; left:0; width:260px; background:#fff; border-radius:14px; margin-top:8px;
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+    padding:8px; opacity:0; visibility:hidden; transform:translateY(-6px);
+    transition:all .18s ease;
+  }
+  .nav > li.open .dropdown{opacity:1; visibility:visible; transform:translateY(0)}
+  .dropdown a{display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; color:var(--ink)}
+  .dropdown a:hover{background:var(--paper); color:var(--primary)}
+  .badge{display:inline-block; font-size:12px; font-weight:700; color:var(--accent); background:rgba(46,139,87,.10); padding:4px 8px; border-radius:999px}
+
+  /* Mobile Navigation */
+  .hamburger{display:none; margin-left:auto; background:none; border:0; font-size:26px; color:var(--primary-700); cursor: pointer; padding: 10px;}
+  .mobile-overlay{position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:999; opacity:0; visibility:hidden; transition:.2s}
+  .drawer{position:fixed; right:0; top:0; bottom:0; width:320px; max-width: 90vw; background:#fff; z-index:1000; transform:translateX(100%); transition:transform .25s ease; box-shadow: -12px 0 24px rgba(0,0,0,.1); padding:20px}
+  .drawer.open{transform:translateX(0)}
+  .mobile-overlay.show{opacity:1; visibility:visible}
+  .mnav a, .mnav button{display:flex; justify-content:space-between; align-items:center; width:100%; background:none; border:0; padding:12px 10px; font-size:16px; color:var(--primary-700); border-radius:10px; text-align: left; cursor: pointer;}
+  .mnav a:hover, .mnav button:hover{background:var(--paper)}
+  .m-sub{padding-left:14px; display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease}
+  .m-sub.open{grid-template-rows:1fr}
+  .m-sub > div{overflow:hidden}
+  .m-cta{display:block; text-align:center; background:var(--accent); color:#fff; padding:12px 14px; border-radius:10px; font-weight:700}
+  
+  @media (max-width:1024px){
+    .nav{display:none}
+    .hamburger{display:block}
+  }
+
+  /* Main Content Padding (for demonstration) */
+  main{
+    padding-top: calc(var(--header-h) + 40px);
+    padding-bottom: 40px;
+  }
+</style>
 </head>
-<body class="font-sans antialiased">
+<body>
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        
-        <!-- Logo + Name -->
-        <div class="flex items-center space-x-3">
-          <img src="logo.png" alt="School Logo" class="h-14 w-14 object-contain">
-          <span class="font-bold text-xl text-blue-900">Cusman Binu Cafan Secondary School</span>
+<header class="site-header">
+  <div class="container nav-row">
+    
+    <a href="#" class="brand" aria-label="School home">
+      <img alt="Cusmaan Binu Cafaan School Logo" width="52" height="52"
+           src="data:image/webp;base64,UklGRj0AAABXRUJQVlA4TBkAAAAvE8AAEJ8AP0nWgFvM0KJAAf8S4mJg1qgYwAAAPr8zv9PAAEAAABWUDhMFQAAADYkQAAAHrjnk7o/3qv0yq0T3oAAABJAAA...">
+      <span class="brand-title">Cusmaan Binu Cafaan<br><small>Secondary School</small></span>
+    </a>
+
+    <ul class="nav">
+      <li><a href="#" class="active">Home</a></li>
+      <li class="has-dd">
+        <button aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About Us
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown" id="about-menu" role="menu">
+          <a href="#"><span>Overview</span> <span class="badge">About</span></a>
+          <a href="#"><span>Principal’s Message</span></a>
         </div>
-
-        <!-- Navigation -->
-        <nav class="hidden md:flex space-x-8 font-medium text-gray-700">
-          <a href="#about" class="hover:text-blue-700 transition">About Us</a>
-          <a href="#principal" class="hover:text-blue-700 transition">Principal</a>
-          <a href="#curriculum" class="hover:text-blue-700 transition">Curriculum</a>
-          <a href="#admissions" class="hover:text-blue-700 transition">Admissions</a>
-          <a href="#timetable" class="hover:text-blue-700 transition">Time Table</a>
-          <a href="#calendar" class="hover:text-blue-700 transition">Calendar</a>
-          <a href="#events" class="hover:text-blue-700 transition">Events</a>
-          <a href="#careers" class="hover:text-blue-700 transition">Careers</a>
-          <a href="#gallery" class="hover:text-blue-700 transition">Gallery</a>
-          <a href="#contact" class="hover:text-blue-700 transition">Contact</a>
-        </nav>
-
-        <!-- Enroll Now Button -->
-        <div class="hidden md:block">
-          <a href="#enroll" class="px-5 py-2 bg-blue-900 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition">
-            Enroll Now
-          </a>
+      </li>
+      <li class="has-dd">
+        <button aria-haspopup="true" aria-expanded="false" aria-controls="academics-menu">Academics
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown" id="academics-menu" role="menu">
+          <a href="#">Curriculum</a>
+          <a href="#">Timetable</a>
+          <a href="#">Admissions</a>
         </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden">
-          <button id="mobile-menu-toggle" class="text-gray-700 text-3xl focus:outline-none">
-            <i class="fas fa-bars"></i>
-          </button>
+      </li>
+      <li class="has-dd">
+        <button aria-haspopup="true" aria-expanded="false" aria-controls="school-menu">School Life
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown" id="school-menu" role="menu">
+          <a href="#">Events</a>
+          <a href="#">Calendar</a>
+          <a href="#">Gallery</a>
         </div>
+      </li>
+      <li><a href="#">Jobs</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#" class="cta">Enroll Now</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+  </div>
+
+  <div class="mobile-overlay" id="overlay"></div>
+  <nav class="drawer" id="drawer" aria-label="Mobile navigation">
+    <div class="container" style="padding:0">
+      <button class="hamburger" id="closeDrawer" aria-label="Close menu" style="margin:0 0 10px 0">✕</button>
+      <div class="mnav">
+        <a href="#">Home</a>
+        <button type="button" data-mtoggle="about">About Us ▾</button>
+        <div class="m-sub" id="m-about"><div>
+          <a href="#">Overview</a>
+          <a href="#">Principal’s Message</a>
+        </div></div>
+        <button type="button" data-mtoggle="academics">Academics ▾</button>
+        <div class="m-sub" id="m-academics"><div>
+          <a href="#">Curriculum</a>
+          <a href="#">Timetable</a>
+          <a href="#">Admissions</a>
+        </div></div>
+        <button type="button" data-mtoggle="school">School Life ▾</button>
+        <div class="m-sub" id="m-school"><div>
+          <a href="#">Events</a>
+          <a href="#">Calendar</a>
+          <a href="#">Gallery</a>
+        </div></div>
+        <a href="#">Jobs</a>
+        <a href="#">Contact</a>
+        <a href="#" class="m-cta">Enroll Now</a>
       </div>
     </div>
+  </nav>
+</header>
 
-    <!-- Mobile Menu Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-lg">
-      <nav class="flex flex-col px-6 py-4 space-y-3 font-medium">
-        <a href="#about" class="hover:text-blue-700">About Us</a>
-        <a href="#principal" class="hover:text-blue-700">Principal</a>
-        <a href="#curriculum" class="hover:text-blue-700">Curriculum</a>
-        <a href="#admissions" class="hover:text-blue-700">Admissions</a>
-        <a href="#timetable" class="hover:text-blue-700">Time Table</a>
-        <a href="#calendar" class="hover:text-blue-700">Calendar</a>
-        <a href="#events" class="hover:text-blue-700">Events</a>
-        <a href="#careers" class="hover:text-blue-700">Careers</a>
-        <a href="#gallery" class="hover:text-blue-700">Gallery</a>
-        <a href="#contact" class="hover:text-blue-700">Contact</a>
-        <a href="#enroll" class="px-4 py-2 bg-blue-900 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition">
-          Enroll Now
-        </a>
-      </nav>
-    </div>
-  </header>
 
-  <script>
-    // Mobile menu toggle
-    const menuBtn = document.getElementById("mobile-menu-toggle");
-    const menu = document.getElementById("mobile-menu");
 
-    menuBtn.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
+
+<script>
+/* =======================================================
+  JavaScript for Header Interactivity
+  =======================================================
+*/
+
+(function() {
+  // Desktop dropdown logic with ARIA support
+  document.querySelectorAll('.nav .has-dd > button').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const li = btn.closest('li');
+      const isOpen = li.classList.contains('open');
+
+      // First, close any other open dropdowns
+      document.querySelectorAll('.nav > li.open').forEach(openLi => {
+        if (openLi !== li) {
+          openLi.classList.remove('open');
+          openLi.querySelector('button').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Then, toggle the current one
+      if (isOpen) {
+        li.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        li.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
-  </script>
+  });
+
+  // Close dropdowns when clicking outside the nav
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav')) {
+      document.querySelectorAll('.nav > li.open').forEach(li => {
+        li.classList.remove('open');
+        li.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // Mobile drawer & accordions
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('overlay');
+  const openBtn = document.getElementById('hamburger');
+  const closeBtn = document.getElementById('closeDrawer');
+  
+  function openDrawer() { 
+    drawer.classList.add('open'); 
+    overlay.classList.add('show'); 
+    document.body.style.overflow = 'hidden'; 
+  }
+  function closeDrawer() { 
+    drawer.classList.remove('open'); 
+    overlay.classList.remove('show'); 
+    document.body.style.overflow = ''; 
+  }
+
+  openBtn.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  
+  document.querySelectorAll('[data-mtoggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-mtoggle');
+      const panel = document.getElementById('m-' + id);
+      panel.classList.toggle('open');
+    });
+  });
+
+  // Close mobile drawer on link click
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Keyboard support to close menus with the Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      // Close any open desktop dropdown
+      document.querySelectorAll('.nav > li.open').forEach(li => {
+        li.classList.remove('open');
+        li.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+
+      // Close the mobile drawer if it is open
+      if (drawer.classList.contains('open')) {
+        closeDrawer();
+      }
+    }
+  });
+
+})(); // End of self-executing function
+</script>
+
 </body>
 </html>

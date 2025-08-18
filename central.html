@@ -7,6 +7,12 @@
 <meta name="description" content="Cusmaan Binu Cafaan Secondary School — Today a reader, tomorrow a leader." />
 <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
 <style>
+  /* ========================================
+     CSS for the Standalone Header Component
+     ========================================
+   */
+
+  /* Variables & Basic Setup */
   :root{
     --primary:#114f7a;
     --primary-700:#0d3b60;
@@ -19,7 +25,6 @@
     --shadow:0 10px 30px rgba(17,76,129,.10);
     --radius:14px;
     --header-h:74px;
-    --portrait-size: clamp(180px, 22vw, 280px);
   }
 
   *{box-sizing:border-box}
@@ -35,58 +40,88 @@
   a:hover{color:var(--accent)}
   img{max-width:100%; display:block}
   .container{max-width:1200px; margin:0 auto; padding:0 20px}
-
-  /* Header */
-  .site-header{position:fixed; inset:0 0 auto 0; height:var(--header-h); background:#fff; z-index:1000; box-shadow:0 2px 14px rgba(0,0,0,.04)}
+    /* Header Styles */
+  .site-header{
+    position:fixed; inset:0 0 auto 0; height:var(--header-h);
+    background:rgba(255, 255, 255, 0.85);
+    backdrop-filter:saturate(180%) blur(10px);
+    z-index:1000; box-shadow:0 2px 14px rgba(0,0,0,.04);
+  }
   .nav-row{height:100%; display:flex; align-items:center; gap:20px}
-  .brand{display:flex; align-items:center; gap:12px; white-space:nowrap}
-  .brand .title{display:flex; flex-direction:column; line-height:1.1}
-  .brand .title b{color:var(--primary)}
-  .brand .title small{color:var(--muted); letter-spacing:.5px}
+  .brand{display:flex; align-items:center; gap:14px; white-space:nowrap; font-weight:700; color:var(--primary-700); margin-left:-10px;}  
+  .brand-title {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .brand-title small {
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  @media (max-width: 480px) {
+    .brand-title {
+      display: none;
+    }
+  }
 
-  /* Desktop nav */
+  /* Desktop Navigation */
   .nav{margin-left:auto; display:flex; align-items:center; gap:8px}
   .nav > li{list-style:none; position:relative}
   .nav > li > a, .nav > li > button{
     border:0; background:none; cursor:pointer;
     padding:12px 14px; border-radius:10px; color:var(--primary-700);
     font-weight:600; font-size:15px;
+    display: flex; /* Ensures button content aligns */
+    align-items: center;
   }
   .nav > li > a.active, .nav > li > button.active,
   .nav > li > a:hover, .nav > li > button:hover{background:var(--paper); color:var(--primary)}
-  .cta{background:var(--accent); color:#fff !important; box-shadow:var(--shadow)}
-  .cta:hover{background:var(--accent-700)}
-  .chev{width:16px; height:16px; margin-left:6px; vertical-align:-2px}
+  .cta{background:var(--accent) !important; color:#fff !important; box-shadow:var(--shadow)}  .cta:hover{background:var(--accent-700)}
 
-  /* Dropdown */
+  .chev{width:16px; height:16px; margin-left:6px; vertical-align:-2px; transition: transform 0.2s ease;}
+  .nav > li.open .chev {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown Menu */
   .dropdown{
     position:absolute; top:100%; left:0; width:260px; background:#fff; border-radius:14px; margin-top:8px;
     box-shadow:0 20px 50px rgba(0,0,0,.08);
     padding:8px; opacity:0; visibility:hidden; transform:translateY(-6px);
     transition:all .18s ease;
   }
-  .nav > li:hover .dropdown, .nav > li.open .dropdown{opacity:1; visibility:visible; transform:translateY(0)}
+  .nav > li.open .dropdown{opacity:1; visibility:visible; transform:translateY(0)}
   .dropdown a{display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; color:var(--ink)}
   .dropdown a:hover{background:var(--paper); color:var(--primary)}
   .badge{display:inline-block; font-size:12px; font-weight:700; color:var(--accent); background:rgba(46,139,87,.10); padding:4px 8px; border-radius:999px}
 
-  /* Mobile */
-  .hamburger{display:none; margin-left:auto; background:none; border:0; font-size:26px; color:var(--primary-700)}
+  /* Mobile Navigation */
+  .hamburger{display:none; margin-left:auto; background:none; border:0; font-size:26px; color:var(--primary-700); cursor: pointer; padding: 10px;}
   .mobile-overlay{position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:999; opacity:0; visibility:hidden; transition:.2s}
-  .drawer{position:fixed; right:0; top:0; bottom:0; width:320px; background:#fff; z-index:1000; transform:translateX(100%); transition:transform .25s ease; box-shadow: -12px 0 24px rgba(0,0,0,.1); padding:20px}
+  .drawer{position:fixed; right:0; top:0; bottom:0; width:320px; max-width: 90vw; background:#fff; z-index:1000; transform:translateX(100%); transition:transform .25s ease; box-shadow: -12px 0 24px rgba(0,0,0,.1); padding:20px}
   .drawer.open{transform:translateX(0)}
   .mobile-overlay.show{opacity:1; visibility:visible}
-  .mnav a, .mnav button{display:flex; justify-content:space-between; align-items:center; width:100%; background:none; border:0; padding:12px 10px; font-size:16px; color:var(--primary-700); border-radius:10px}
+  .mnav a, .mnav button{display:flex; justify-content:space-between; align-items:center; width:100%; background:none; border:0; padding:12px 10px; font-size:16px; color:var(--primary-700); border-radius:10px; text-align: left; cursor: pointer;}
   .mnav a:hover, .mnav button:hover{background:var(--paper)}
   .m-sub{padding-left:14px; display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease}
   .m-sub.open{grid-template-rows:1fr}
   .m-sub > div{overflow:hidden}
   .m-cta{display:block; text-align:center; background:var(--accent); color:#fff; padding:12px 14px; border-radius:10px; font-weight:700}
-  @media (max-width:1024px){.nav{display:none}.hamburger{display:block}}
+  
+  @media (max-width:1024px){
+    .nav{display:none}
+    .hamburger{display:block}
+  }
 
-  /* Main spacing */
-  main{padding-top:calc(var(--header-h) + 28px)}
-  section{scroll-margin-top:calc(var(--header-h) + 20px)}
+ /* Main spacing */
+  main {
+    padding-top: var(--header-h);
+  }
+  section:not(.hero) {
+    scroll-margin-top: calc(var(--header-h) + 20px);
+  }
+
 
   /* ===== HERO ===== */
   .hero{
@@ -215,10 +250,769 @@
 
 <header class="site-header">
   <div class="container nav-row">
+    
     <a href="#/home" class="brand" aria-label="School home">
-      <img alt="School Logo" width="52" height="52"
+      <img alt="Cusmaan Binu Cafaan School Logo" width="52" height="52"
            src="data:image/webp;base64,UklGRj0AAABXRUJQVlA4TBkAAAAvE8AAEJ8AP0nWgFvM0KJAAf8S4mJg1qgYwAAAPr8zv9PAAEAAABWUDhMFQAAADYkQAAAHrjnk7o/3qv0yq0T3oAAABJAAA...">
+      <span class="brand-title">Cusmaan Binu Cafaan<br><small>Secondary School</small></span>
     </a>
+
+    <ul class="nav">
+      <li><a href="#/home" class="active">Home</a></li>
+      <li class="has-dd">
+        <button aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About Us
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown" id="about-menu" role="menu">
+          <a href="#/about"><span>Overview</span> <span class="badge">About</span></a>
+          <a href="#/about/principal"><span>Principal’s Message</span></a>
+        </div>
+      </li>
+      <li class="has-dd">
+        <button aria-haspopup="true" aria-expanded="false" aria-controls="academics-menu">Academics
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown" id="academics-menu" role="menu">
+          <a href="#/academics/curriculum">Curriculum</a>
+          <a href="#/academics/timetable">Timetable</a>
+          <a href="#/academics/admissions">Admissions</a>
+        </div>
+      </li>
+      <li class="has-dd">
+        <button aria-haspopup="true" aria-expanded="false" aria-controls="school-menu">School Life
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown" id="school-menu" role="menu">
+          <a href="#/school-life/events">Events</a>
+          <a href="#/school-life/calendar">Calendar</a>
+          <a href="#/school-life/gallery">Gallery</a>
+        </div>
+      </li>
+      <li><a href="#/jobs">Jobs</a></li>
+      <li><a href="#/contact">Contact</a></li>
+      <li><a href="#/enroll" class="cta">Enroll Now</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+  </div>
+
+  <div class="mobile-overlay" id="overlay"></div>
+  <nav class="drawer" id="drawer" aria-label="Mobile navigation">
+    <div class="container" style="padding:0">
+      <button class="hamburger" id="closeDrawer" aria-label="Close menu" style="margin:0 0 10px 0">✕</button>
+      <div class="mnav">
+        <a href="#/home">Home</a>
+        <button type="button" data-mtoggle="about">About Us ▾</button>
+        <div class="m-sub" id="m-about"><div>
+          <a href="#/about">Overview</a>
+          <a href="#/about/principal">Principal’s Message</a>
+        </div></div>
+        <button type="button" data-mtoggle="academics">Academics ▾</button>
+        <div class="m-sub" id="m-academics"><div>
+          <a href="#/academics/curriculum">Curriculum</a>
+          <a href="#/academics/timetable">Timetable</a>
+          <a href="#/academics/admissions">Admissions</a>
+        </div></div>
+        <button type="button" data-mtoggle="school">School Life ▾</button>
+        <div class="m-sub" id="m-school"><div>
+          <a href="#/school-life/events">Events</a>
+          <a href="#/school-life/calendar">Calendar</a>
+          <a href="#/school-life/gallery">Gallery</a>
+        </div></div>
+        <a href="#/jobs">Jobs</a>
+        <a href="#/contact">Contact</a>
+        <a href="#/enroll" class="m-cta">Enroll Now</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+    <div data-route="home" class="active">
+        <section class="hero" role="region" aria-label="School hero">
+            <div class="content">
+                <p class="lead">
+                    A calm, focused place to learn and grow—strong minds,<br>
+                    strong values.
+                </p>
+
+                <div class="cta">
+                    <a class="btn primary" href="#/enroll" aria-label="Enroll Now">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+                            <path d="M6 12v5a6 6 0 0 0 12 0v-5"/>
+                        </svg>
+                        Enroll Now
+                    </a>
+
+                    <a class="btn secondary" href="#/academics/curriculum" aria-label="Explore Curriculum">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M20 22V6a2 2 0 0 0-2-2H6.5A2.5 2.5 0 0 0 4 6.5v13"/>
+                        </svg>
+                        Explore Curriculum
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="home-about" class="section">
+      <div class="container">
+        <h2>About Us</h2>
+        <div class="split-2col" style="margin-top:18px">
+          <div class="grid" style="gap:18px">
+            <article class="card">
+              <p>Welcome to Cusmaan Binu Cafaan Secondary School, where we believe that a truly great education builds both the mind and the soul. Our school provides a safe, supportive, and intellectually stimulating environment for students to thrive academically, personally, and spiritually.</p>
+              <p>Named in honour of the esteemed companion Uthman ibn Affan (Cusmaan Binu Cafaan), we are guided by a legacy of leadership, wisdom, and deep-seated integrity. Our dedicated staff is committed to delivering a challenging curriculum that prepares students for the competitive demands of university and the modern world, while seamlessly integrating core Islamic values into their daily learning experience.</p>
+            </article>
+            <div class="link-row">
+              <a class="btn primary" href="#/enroll">Enroll Now</a>
+              <a class="btn" href="#/academics/curriculum" style="margin-left:10px">Explore Curriculum</a>
+            </div>
+          </div>
+          <div>
+            <div class="video-frame">
+              <video src="Images/promo.mp4" poster="Images/promo-poster.jpg" controls playsinline
+                     style="width:100%; max-width:520px; border-radius:16px; box-shadow:0 4px 24px rgba(17,79,122,.08);"></video>
+            </div>
+            <small style="display:block; color:var(--muted); margin-top:8px">Promo • 1–2 minutes • Campus & student life</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="home-principal" class="section">
+      <div class="container">
+        <h2>Principal’s Message</h2>
+        <article class="card">
+          <div class="principal-grid">
+            <div class="principal-msg">
+              <p>Education at Cusmaan Binu Cafaan Secondary School is more than information; it shapes character. Guided by the legacy of Uthman ibn Affan (Dhun-Nurayn), we strive to unite two lights: the enduring light of faith, ethics, and integrity, and the bright light of academic knowledge and inquiry.</p>
+              <p style="margin:18px 0 0 0"></p>
+              <p>With caring teachers and a strong partnership with families, we foster an environment that is intellectually challenging and spiritually nurturing. Our aim is resilient, compassionate, and wise young people—ready to excel in their studies and to live with purpose and service.</p>
+              <p style="margin:18px 0 0 0"></p>
+              <p>Each day, this vision appears in focused lessons, respectful conduct, and steady routines that help students grow. We invite you to read the full message to see how our “Two Lights” philosophy guides everything we do.</p>
+              <a class="btn primary" href="#/about/principal" aria-label="Read the full Principal’s Message" style="margin-top:22px; display:inline-block">Read full message →</a>
+            </div>
+
+            <figure class="portrait-sm">
+              <div class="avatar-circle">
+                <img src="Images/logo.jpg" alt="Portrait of the Principal" />
+              </div>
+              <figcaption>Ahmed Bihi Abdi — Principal</figcaption>
+            </figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="home-academics" style="background:var(--paper)">
+      <div class="container">
+        <h2>Academics</h2>
+        <p class="lead">A rigorous curriculum supported by caring teachers and clear pathways to success.</p>
+        <div class="grid cards">
+          <article class="card"><h3>Curriculum</h3><p>Balanced core subjects, rich electives, project-based learning, and Islamic studies.</p><div class="link-row"><a href="#/academics/curriculum">View curriculum →</a></div></article>
+          <article class="card"><h3>Timetable</h3><p>Structured learning with time for labs, clubs, and tutorials.</p><div class="link-row"><a href="#/academics/timetable">View timetable →</a></div></article>
+          <article class="card"><h3>Admissions</h3><p>Applications are open for the upcoming term. Scholarships available.</p><div class="link-row"><a href="#/academics/admissions">Apply now →</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="home-admissions" style="background:#fff">
+      <style>
+        .ad-steps .title{margin:0 0 6px; color:var(--primary-700)}
+        .ad-steps .sub{color:var(--muted); margin:0 0 14px}
+        .ad-steps .panel{background:#fff; border:1px solid #edf0f5; border-radius:14px; box-shadow:var(--shadow); padding:18px}
+        .ad-steps .flow{position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; padding-top:12px}
+        .ad-steps .flow::before{content:""; position:absolute; left:8%; right:8%; top:28px; height:2px; background:linear-gradient(90deg,#e6edf5, #bfe0cd, #e6edf5)}
+        .ad-steps .step{text-align:center}
+        .ad-steps .n{
+          width:40px;height:40px;border-radius:999px; margin:0 auto 8px;
+          display:grid; place-items:center; font-weight:800;
+          color:var(--accent); background:#fff; border:2px solid var(--accent);
+          box-shadow:0 8px 18px rgba(46,139,87,.12);
+        }
+        .ad-steps h3{margin:0 0 6px; font-size:18px; color:var(--primary-700)}
+        .ad-steps p{margin:0; color:#334155; font-size:15px}
+        .ad-cta{margin-top:14px; display:grid; gap:10px}
+        .ad-cta .row{display:flex; gap:10px; flex-wrap:wrap}
+        .ad-note{margin-top:10px; font-size:14px; color:var(--muted); background:var(--paper); border:1px solid #edf0f5; border-radius:12px; padding:10px 12px}
+        @media (max-width:900px){
+          .ad-steps .flow{grid-template-columns:1fr; gap:14px}
+          .ad-steps .flow::before{display:none}
+          .ad-steps .step{text-align:left; display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start}
+          .ad-steps .n{margin:2px 0 0 0}
+        }
+      </style>
+      <div class="container ad-steps">
+        <h2 class="title">Admissions — Step by Step</h2>
+        <p class="sub">A simple, four-step path from inquiry to acceptance.</p>
+
+        <div class="panel">
+          <div class="flow" role="list">
+            <div class="step" role="listitem">
+              <div class="n" aria-hidden="true">1</div>
+              <div>
+                <h3>Inquiry</h3>
+                <p>Contact us to learn about our programs and ask questions.</p>
+              </div>
+            </div>
+            <div class="step" role="listitem">
+              <div class="n" aria-hidden="true">2</div>
+              <div>
+                <h3>School Tour</h3>
+                <p>Schedule a visit to experience our environment and meet teachers.</p>
+              </div>
+            </div>
+            <div class="step" role="listitem">
+              <div class="n" aria-hidden="true">3</div>
+              <div>
+                <h3>Application</h3>
+                <p>Complete the registration form and submit required documents.</p>
+              </div>
+            </div>
+            <div class="step" role="listitem">
+              <div class="n" aria-hidden="true">4</div>
+              <div>
+                <h3>Acceptance</h3>
+                <p>Receive guidance on onboarding after a successful assessment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:12px">
+          <h3 style="margin:0 0 8px">Ready to begin?</h3>
+          <p class="sub" style="margin:0 0 10px">We review applications weekly and will contact you within 2 business days.</p>
+          <div class="ad-cta">
+            <div class="row">
+              <a class="btn primary" href="#/enroll">Start Your Application</a>
+              <a class="btn" href="#/contact">Contact Admissions</a>
+            </div>
+            <div class="ad-note"><strong>Helpful to have:</strong> recent report card, student ID/birth certificate, and parent contact details.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="home-life">
+      <div class="container">
+        <h2>School Life</h2>
+        <p class="lead">From competitions to community service, learning thrives beyond the classroom.</p>
+        <div class="grid cards">
+          <article class="card"><h3>Events</h3><p>Assemblies, exhibitions, debates, field trips, and more across the year.</p><div class="link-row"><a href="#/school-life/events">See events →</a></div></article>
+          <article class="card"><h3>Calendar</h3><p>Stay on top of academic dates, exams, and term breaks.</p><div class="link-row"><a href="#/school-life/calendar">Open calendar →</a></div></article>
+          <article class="card"><h3>Gallery</h3><p>A look at learning in action and the spirit of our students.</p><div class="link-row"><a href="#/school-life/gallery">View gallery →</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="home-jobs" style="background:var(--paper)">
+      <div class="container">
+        <h2>Jobs</h2>
+        <p class="lead">Join our mission-driven faculty and staff.</p>
+        <div class="grid cards">
+          <article class="card"><h3>Mathematics Teacher</h3><p>Full-time • Main Campus • 2–5 years experience</p></article>
+          <article class="card"><h3>English Teacher</h3><p>Full-time • Main Campus • 2–5 years experience</p></article>
+          <article class="card"><h3>Lab Technician</h3><p>Part-time • Science Department • 1–3 years experience</p></article>
+        </div>
+        <div class="link-row"><a href="#/jobs">See all openings →</a></div>
+      </div>
+    </section>
+
+    <section class="section" id="home-contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="lead">Have questions? We’re here to help.</p>
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:24px">
+          <form class="card" onsubmit="event.preventDefault(); alert('Thank you! We will get back to you.');">
+            <h3>Send us a message</h3>
+            <div style="display:grid; gap:10px; margin-top:10px">
+              <input aria-label="Your name" required placeholder="Full Name" style="padding:12px; border-radius:10px; border:1px solid #dfe6ef">
+              <input aria-label="Your email" type="email" required placeholder="Email" style="padding:12px; border-radius:10px; border:1px solid #dfe6ef">
+              <textarea aria-label="Message" required placeholder="Message" rows="4" style="padding:12px; border-radius:10px; border:1px solid #dfe6ef"></textarea>
+              <button class="btn primary" type="submit">Send Message</button>
+            </div>
+          </form>
+          <div class="card">
+            <h3>School Information</h3>
+            <p><b>Address:</b> Main Campus, Hargeisa</p>
+            <p><b>Email:</b> info@cusmancafaan.edu</p>
+            <p><b>Phone:</b> +252 — — — —</p>
+            <div class="ph" style="margin-top:10px; display:flex; align-items:center; justify-content:center; color:#8aa7c4">Map placeholder</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="home-enroll" style="background:var(--paper)">
+      <div class="container">
+        <h2>Enroll Now</h2>
+        <p class="lead">Start your child’s journey with Cusmaan Binu Cafaan Secondary School.</p>
+        <form class="card" onsubmit="event.preventDefault(); alert('Application submitted!');">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+            <input required placeholder="Student Full Name" style="padding:12px; border-radius:10px; border:1px solid #dfe6ef">
+            <input required placeholder="Parent/Guardian Name" style="padding:12px; border-radius:10px; border:1px solid #dfe6ef">
+            <input type="email" required placeholder="Email" style="padding:12px; border-radius:10px; border:1px solid #dfe6ef">
+            <input required placeholder="Phone" style="padding:12px; border-radius:10px; border:1px solid #dfe6ef">
+            <select required style="padding:12px; border-radius:10px; border:1px solid #dfe6ef">
+              <option value="">Select Grade</option>
+              <option>Form 1</option><option>Form 2</option><option>Form 3</option><option>Form 4</option>
+            </select>
+            <input type="date" required style="padding:12px; border-radius:10px; border:1px solid #dfe6ef">
+          </div>
+          <div style="margin-top:12px"><button class="btn primary" type="submit">Submit Application</button></div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <div data-route="about">
+    <section class="section">
+      <div class="container">
+        <h2>About Us</h2>
+        <div class="split-2col" style="margin-top:18px">
+          <div class="grid" style="gap:18px">
+            <article class="card">
+              <p>At Cusmaan Binu Cafaan Secondary School (Forms 1–4), learning is calm and purposeful. We use simple routines, clear goals, and caring teachers to guide every student. We work closely with families and build everyday habits—respect, responsibility, punctuality, and service—so students can focus and do their best.</p>
+              <p>Lessons are practical and balanced. Students learn through practice, labs, projects, and regular feedback. They grow in English, Arabic, and Somali, and Qur’an/Islamic Studies shape good character each day. After class, clubs, competitions, and community service build confidence and leadership. By graduation, our students are exam-ready, skill-ready, and future-ready.</p>
+            </article>
+            <div class="link-row">
+              <a class="btn primary" href="#/enroll">Enroll Now</a>
+              <a class="btn" href="#/academics/curriculum" style="margin-left:10px">Explore Curriculum</a>
+            </div>
+          </div>
+          <div>
+            <div class="video-frame">
+              <video src="Videos/promo.mp4" poster="Images/promo-poster.jpg" controls playsinline></video>
+            </div>
+            <small style="display:block; color:var(--muted); margin-top:8px">Promo • 1–2 minutes • Campus & student life</small>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div data-route="about/principal">
+    <section class="section principal-full" aria-labelledby="principal-title">
+      <div class="container">
+        <h2 id="principal-title" class="principal-title">A Message from the Principal</h2>
+        <p class="principal-lead">Welcome to Cusmaan Binu Cafaan Secondary School.</p>
+
+        <article class="principal-card" style="padding:32px 24px;">
+          <div style="display:grid; grid-template-columns:180px 1fr; gap:32px; align-items:start;">
+            <figure style="margin:0; text-align:center;">
+              <div style="width:180px; aspect-ratio:1/1; border-radius:999px; overflow:hidden; border:4px solid #fff; box-shadow:0 10px 30px rgba(17,76,129,.10); background:#f8fafc; margin:0 auto 8px;">
+                <img src="Images/logo.jpg" alt="Portrait of Principal Ahmed Bihi Abdi" style="display:block; width:100%; height:100%; object-fit:cover; object-position:center;" />
+              </div>
+              <figcaption style="padding:6px 8px; font-size:15px; color:#6b7b8c;">Ahmed Bihi Abdi — Principal</figcaption>
+            </figure>
+            <div class="message">
+              <p>It is with great pride and a profound sense of responsibility that I welcome you to the official portal of Cusmaan Binu Cafaan Secondary School.</p>
+              <p>At our institution, we believe that true education is not merely the acquisition of information, but the illumination of the soul and the cultivation of character. Our school is proudly named after the esteemed third Caliph, Uthman ibn Affan (Cusmaan Binu Cafaan), a leader known as Dhun-Nurayn — the Possessor of Two Lights. This noble title is the very cornerstone of our educational philosophy.</p>
+              <p>We are dedicated to nurturing students who are guided by these two lights: the eternal light of faith, ethics, and integrity, and the brilliant light of academic knowledge, critical inquiry, and worldly understanding. It is the perfect harmony of these two lights that creates a truly balanced and enlightened individual.</p>
+              <p>Education at Cusmaan Binu Cafaan Secondary School is more than information; it shapes character. Guided by the legacy of Uthman ibn Affan (Dhun-Nurayn), we strive to unite two lights: the enduring light of faith, ethics, and integrity, and the bright light of academic knowledge and inquiry.</p>
+              <p>With caring teachers and a strong partnership with families, we foster an environment that is intellectually challenging and spiritually nurturing. Our aim is resilient, compassionate, and wise young people—ready to excel in their studies and to live with purpose and service.</p>
+              <p>Our dedicated faculty is committed to fostering an environment that is both intellectually challenging and spiritually nurturing. We see education as a sacred trust and a collaborative partnership between the school, our students, and their families. Together, we work to develop resilient, compassionate, and wise young adults who are prepared not only to excel in their chosen fields but also to lead lives of purpose and service.</p>
+              <p>I warmly invite you to explore our community, to witness our commitment to excellence firsthand, and to discover how we are preparing the leaders of tomorrow for a future where they will not only succeed, but also serve and inspire.</p>
+              <div class="signature">
+                <div><strong>Ahmed Bihi Abdi</strong></div>
+                <div>Principal</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <a class="back" href="#home-principal" aria-label="Back to Home">← Back to Home</a>
+      </div>
+    </section>
+  </div>
+
+  <div data-route="academics/curriculum">
+    <section class="section curriculum">
+      <style>
+        .curriculum .subhead{color:var(--muted); margin:0 0 22px}
+        .curriculum .subjects{
+          display:grid;
+          grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+          gap:18px;
+        }
+        .curriculum .subject{display:grid; grid-template-rows:auto 1fr auto}
+        .curriculum .subject .head{display:flex; align-items:center; gap:10px; margin-bottom:4px}
+        .curriculum .subject .head .icon{width:22px; height:22px; color:var(--accent); flex:0 0 22px}
+        .curriculum .subject p{margin:0 0 8px}
+        .curriculum .subject ul{margin:6px 0 0; padding-left:18px}
+        .curriculum .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+        .curriculum .tag{
+          font-size:12px; font-weight:700; color:var(--accent);
+          background:rgba(46,139,87,.10); padding:4px 8px; border-radius:999px;
+        }
+        .curriculum .footer-links{display:flex; gap:10px; flex-wrap:wrap; margin-top:22px}
+        .curriculum .note{
+          margin-top:18px; background:var(--paper); border:1px solid #edf0f5;
+          border-radius:12px; padding:12px; color:var(--muted)
+        }
+      </style>
+
+      <div class="container">
+        <h2>Curriculum</h2>
+        <p class="subhead">Forms 1–4 • A focused, balanced programme across sciences, languages, and humanities.</p>
+
+        <div class="subjects">
+          <article class="card subject">
+            <div class="head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 3v4l-4 7a5 5 0 1 0 8 0L9 7V3zM14 3h7M17 3v6"/>
+              </svg>
+              <h3 style="margin:0">Chemistry</h3>
+            </div>
+            <p>Structure of matter, reactions, and real-world applications.</p>
+            <ul>
+              <li>Atomic structure & periodicity</li>
+              <li>Bonding, stoichiometry & energetics</li>
+              <li>Acids/bases, redox & organic basics</li>
+            </ul>
+            <div class="tags"><span class="tag">Lab skills</span><span class="tag">Problem solving</span></div>
+          </article>
+
+          <article class="card subject">
+            <div class="head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s7-5 7-11a7 7 0 0 0-14 0c0 6 7 11 7 11z"/>
+              </svg>
+              <h3 style="margin:0">Biology</h3>
+            </div>
+            <p>Life processes from cells to ecosystems.</p>
+            <ul>
+              <li>Cells & microscopy</li>
+              <li>Genetics & inheritance</li>
+              <li>Human body & ecology</li>
+            </ul>
+            <div class="tags"><span class="tag">Scientific inquiry</span><span class="tag">Data handling</span></div>
+          </article>
+
+          <article class="card subject">
+            <div class="head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/><path d="M19.4 15A8 8 0 1 1 15 4.6"/>
+              </svg>
+              <h3 style="margin:0">Physics</h3>
+            </div>
+            <p>How the universe works—forces, energy, waves, and electricity.</p>
+            <ul>
+              <li>Motion & forces</li>
+              <li>Energy, work & power</li>
+              <li>Waves, light & electricity</li>
+            </ul>
+            <div class="tags"><span class="tag">Quantitative</span><span class="tag">Modelling</span></div>
+          </article>
+
+          <article class="card subject">
+            <div class="head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 7h16M4 12h10M4 17h16"/>
+              </svg>
+              <h3 style="margin:0">Mathematics</h3>
+            </div>
+            <p>Fluency, reasoning, and problem-solving across strands.</p>
+            <ul>
+              <li>Number & algebra</li>
+              <li>Geometry & trigonometry</li>
+              <li>Statistics & probability</li>
+            </ul>
+            <div class="tags"><span class="tag">Reasoning</span><span class="tag">Exam skills</span></div>
+          </article>
+
+          <article class="card subject">
+            <div class="head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 17l9 4 9-4"/><path d="M3 12l9 4 9-4"/>
+              </svg>
+              <h3 style="margin:0">History & Geography</h3>
+            </div>
+            <p>People, places, and events that shape our world.</p>
+            <ul>
+              <li>World & regional history themes</li>
+              <li>Maps, climate & resources</li>
+              <li>Fieldwork & source analysis</li>
+            </ul>
+            <div class="tags"><span class="tag">Critical thinking</span><span class="tag">Research</span></div>
+          </article>
+
+          <article class="card subject">
+            <div class="head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z"/><path d="M9 12h6"/>
+              </svg>
+              <h3 style="margin:0">Islamic Studies</h3>
+            </div>
+            <p>Faith, character, and daily practice.</p>
+            <ul>
+              <li>Qur’an (recitation & tafsir)</li>
+              <li>Fiqh & Seerah</li>
+              <li>Akhlaq & community service</li>
+            </ul>
+            <div class="tags"><span class="tag">Values</span><span class="tag">Citizenship</span></div>
+          </article>
+
+          <article class="card subject">
+            <div class="head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 19h14M8 17a4 4 0 1 1 8 0"/>
+              </svg>
+              <h3 style="margin:0">Arabic</h3>
+            </div>
+            <p>Language for understanding the Qur’an and wider world.</p>
+            <ul>
+              <li>Reading & vocabulary</li>
+              <li>Grammar & writing</li>
+              <li>Listening & speaking</li>
+            </ul>
+            <div class="tags"><span class="tag">Fluency</span><span class="tag">Comprehension</span></div>
+          </article>
+
+          <article class="card subject">
+            <div class="head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h12v16H4z"/><path d="M8 4v16"/>
+              </svg>
+              <h3 style="margin:0">English</h3>
+            </div>
+            <p>Communication, literature, and academic writing.</p>
+            <ul>
+              <li>Reading & literary study</li>
+              <li>Grammar & composition</li>
+              <li>Oral presentations</li>
+            </ul>
+            <div class="tags"><span class="tag">Writing</span><span class="tag">Speaking</span></div>
+          </article>
+
+          <article class="card subject">
+            <div class="head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 20l2-7L2 9h7l3-7z"/>
+              </svg>
+              <h3 style="margin:0">Somali</h3>
+            </div>
+            <p>Mother-tongue literacy, culture, and expression.</p>
+            <ul>
+              <li>Reading & comprehension</li>
+              <li>Writing & grammar</li>
+              <li>Poetry & oral tradition</li>
+            </ul>
+            <div class="tags"><span class="tag">Literacy</span><span class="tag">Culture</span></div>
+          </article>
+
+          <article class="card subject">
+            <div class="head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M12 16v4"/>
+              </svg>
+              <h3 style="margin:0">Computer (ICT)</h3>
+            </div>
+            <p>Digital literacy and foundations of computing.</p>
+            <ul>
+              <li>Productivity tools & internet safety</li>
+              <li>Spreadsheets & data</li>
+              <li>Intro to coding & logic</li>
+            </ul>
+            <div class="tags"><span class="tag">Creativity</span><span class="tag">Tech skills</span></div>
+          </article>
+        </div>
+
+        <div class="note">
+          Continuous assessment (classwork, quizzes, projects) plus end-of-term exams. Practical work features strongly in science and ICT.
+        </div>
+
+        <div class="footer-links">
+          <a class="btn" href="#/academics/timetable">View Timetable</a>
+          <a class="btn primary" href="#/academics/admissions">Admissions & How to Apply</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div data-route="academics/timetable">
+    <section class="section timetable">
+      <style>
+        .timetable .subhead{color:var(--muted); margin:4px 0 18px}
+        .timetable .toolbar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:12px}
+        .timetable .select{
+          padding:10px 12px; border-radius:12px; border:1px solid var(--ring); background:#fff; color:var(--primary-700); font-weight:700;
+        }
+        .timetable .card{overflow:auto}
+        .timetable table{width:100%; border-collapse:collapse; border:1px solid #edf0f5; background:#fff}
+        .timetable thead th{
+          background:var(--paper); color:var(--primary-700); font-weight:700; text-align:left; padding:10px 12px; border-bottom:1px solid #edf0f5;
+        }
+        .timetable tbody td{padding:12px; border-bottom:1px solid #f0f3f7; color:#334155; vertical-align:middle}
+        .timetable tbody tr:last-child td{border-bottom:0}
+        .timetable .time{white-space:nowrap; color:#475569; font-weight:700}
+        .timetable .break{background:#f7fafc}
+        .timetable .break td{color:#4b5563; text-align:center; font-weight:700}
+        .timetable .muted{color:#94a3b8}
+        @media (max-width:700px){
+          .timetable thead th:first-child, .timetable .time{position:sticky; left:0; background:#fff; z-index:1}
+          .timetable thead th:first-child{background:var(--paper)}
+        }
+      </style>
+
+      <div class="container">
+        <h2>Timetable</h2>
+        <p class="subhead">Saturday – Wednesday • 07:30–12:00 <span class="muted">• Break 09:40–10:00</span></p>
+
+        <div class="toolbar">
+          <label for="tt-class" class="muted" style="font-weight:700">Class</label>
+          <select id="tt-class" class="select" aria-label="Select class">
+            <option value="">— Select Class —</option>
+            <optgroup label="Form 1">
+              <option>Form 1A</option><option>Form 1B</option><option>Form 1C</option><option>Form 1D</option>
+            </optgroup>
+            <optgroup label="Form 2">
+              <option>Form 2A</option><option>Form 2B</option><option>Form 2C</option><option>Form 2D</option>
+            </optgroup>
+            <optgroup label="Form 3">
+              <option>Form 3A</option><option>Form 3B</option><option>Form 3C</option><option>Form 3D</option>
+            </optgroup>
+            <optgroup label="Form 4">
+              <option>Form 4A</option><option>Form 4B</option><option>Form 4C</option><option>Form 4D</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="card" id="tt-wrap" style="display:none">
+          <table aria-describedby="tt-caption">
+            <caption id="tt-caption" class="muted" style="caption-side:bottom; padding:10px 0">Times shown in 40–45 minute blocks.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Time</th>
+                <th scope="col">Saturday</th>
+                <th scope="col">Sunday</th>
+                <th scope="col">Monday</th>
+                <th scope="col">Tuesday</th>
+                <th scope="col">Wednesday</th>
+              </tr>
+            </thead>
+            <tbody id="tt-body"><tr><td class="time">07:30–08:10</td><td colspan="5" class="muted">Select a class to view</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<script>
+/* =======================================================
+   JavaScript for Header Interactivity
+   =======================================================
+*/
+
+(function() {
+  // Desktop dropdown logic with ARIA support
+  document.querySelectorAll('.nav .has-dd > button').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const li = btn.closest('li');
+      const isOpen = li.classList.contains('open');
+
+      // First, close any other open dropdowns
+      document.querySelectorAll('.nav > li.open').forEach(openLi => {
+        if (openLi !== li) {
+          openLi.classList.remove('open');
+          openLi.querySelector('button').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Then, toggle the current one
+      if (isOpen) {
+        li.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        li.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Close dropdowns when clicking outside the nav
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav')) {
+      document.querySelectorAll('.nav > li.open').forEach(li => {
+        li.classList.remove('open');
+        li.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // Mobile drawer & accordions
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('overlay');
+  const openBtn = document.getElementById('hamburger');
+  const closeBtn = document.getElementById('closeDrawer');
+  
+  function openDrawer() { 
+    drawer.classList.add('open'); 
+    overlay.classList.add('show'); 
+    document.body.style.overflow = 'hidden'; 
+  }
+  function closeDrawer() { 
+    drawer.classList.remove('open'); 
+    overlay.classList.remove('show'); 
+    document.body.style.overflow = ''; 
+  }
+
+  openBtn.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  
+  document.querySelectorAll('[data-mtoggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-mtoggle');
+      const panel = document.getElementById('m-' + id);
+      panel.classList.toggle('open');
+    });
+  });
+
+  // Close mobile drawer on link click
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Keyboard support to close menus with the Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      // Close any open desktop dropdown
+      document.querySelectorAll('.nav > li.open').forEach(li => {
+        li.classList.remove('open');
+        li.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+
+      // Close the mobile drawer if it is open
+      if (drawer.classList.contains('open')) {
+        closeDrawer();
+      }
+    }
+  });
+
+})(); // End of self-executing function
+</script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="#/home" class="brand" aria-label="Cusmaan Binu Cafaan Secondary School home">
+        <img 
+          src="Images/logo.jpg" 
+          alt="Cusmaan Binu Cafaan Secondary School Logo" 
+          width="52" height="52"
+        >
+        <span class="brand-title">
+          Cusmaan Binu Cafaan<br><small>Secondary School</small>
+        </span>
+      </a>
+  
 
     <ul class="nav" role="menubar" aria-label="Main">
       <li role="none"><a role="menuitem" href="#/home" data-top="home" class="active">Home</a></li>
@@ -236,7 +1030,7 @@
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="dropdown" role="menu">
-          <a href="#/academics/curriculum">Curriculum</a>
+          <a href="curriculum.html">Curriculum</a>
           <a href="#/academics/timetable">Timetable</a>
           <a href="#/academics/admissions">Admissions</a>
         </div>
@@ -292,37 +1086,37 @@
 
 <main>
 
-  <!-- HOME -->
-  <div data-route="home" class="active">
-    <!-- HERO -->
-    <section class="hero" role="region" aria-label="School hero">
-      <div class="content">
-        <p class="lead">
-          A calm, focused place to learn and grow—strong minds,<br>
-          strong values.
-        </p>
+    <!-- HOME -->
+    <div data-route="home" class="active">
+      <!-- HERO -->
+      <section class="hero" role="region" aria-label="School hero">
+        <div class="content">
+          <p class="lead">
+            A calm, focused place to learn and grow—strong minds,<br>
+            strong values.
+          </p>
 
-        <!-- Dual CTAs -->
-        <div class="cta">
-          <a class="btn primary" href="#/enroll" aria-label="Enroll Now">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 10L12 5 2 10l10 5 10-5z"/>
-              <path d="M6 12v5a6 6 0 0 0 12 0v-5"/>
-            </svg>
-            Enroll Now
-          </a>
+          <!-- Dual CTAs -->
+          <div class="cta">
+            <a class="btn primary" href="#/enroll" aria-label="Enroll Now">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+                <path d="M6 12v5a6 6 0 0 0 12 0v-5"/>
+              </svg>
+              Enroll Now
+            </a>
 
-          <a class="btn secondary" href="#/academics/curriculum" aria-label="Explore Curriculum">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-              <path d="M20 22V6a2 2 0 0 0-2-2H6.5A2.5 2.5 0 0 0 4 6.5v13"/>
-            </svg>
-            Explore Curriculum
-          </a>
+            <a class="btn secondary" href="#/academics/curriculum" aria-label="Explore Curriculum">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M20 22V6a2 2 0 0 0-2-2H6.5A2.5 2.5 0 0 0 4 6.5v13"/>
+              </svg>
+              Explore Curriculum
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
-    <!-- /HERO -->
+      </section>
+      <!-- /HERO -->
 
     <!-- HOME: About Us -->
     <section id="home-about" class="section">
