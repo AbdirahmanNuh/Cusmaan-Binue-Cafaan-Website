@@ -5,157 +5,99 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Curriculum — Cusmaan Binu Cafaan Secondary School</title>
 <meta name="description" content="Curriculum overview for Forms 1–4 at Cusmaan Binu Cafaan Secondary School." />
-<style>
-  :root{
-    --primary:#0d3b60;
-    --accent:#2e8b57;
-    --ink:#22313f;
-    --muted:#6b7b8c;
-    --paper:#f6f8fb;
-    --ring:#e6edf5;
-    --radius:14px;
-    --shadow:0 8px 20px rgba(17,76,129,.08);
-    --container: 960px;
-    --surface:#fff;
-  }
-
-  /* Dark theme overrides (no layout changes) */
-  html[data-theme="dark"]{
-    --primary:#8cc8ff;
-    --accent:#46b07a;
-    --ink:#e6edf7;
-    --muted:#a7b4c4;
-    --paper:#0f1730;
-    --ring:#2a3950;
-    --shadow:0 10px 24px rgba(0,0,0,.35);
-    --surface:#0b1220;
-  }
-
-  /* Base */
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
-    color:var(--ink);
-    background:var(--surface);
-    line-height:1.65;
-  }
-  a{color:var(--primary); text-decoration:none}
-  a:hover{color:var(--accent)}
-  .container{max-width:var(--container); margin:0 auto; padding:0 20px}
-
-  /* Simple header */
-  header{
-    position:sticky; top:0; background:var(--surface); border-bottom:1px solid var(--ring);
-    z-index:10;
-  }
-  .header-row{
-    display:flex; align-items:center; justify-content:space-between;
-    min-height:66px;
-  }
-  .brand{display:flex; align-items:center; gap:10px; color:var(--primary); font-weight:800}
-  .brand span{color:var(--muted); font-weight:600}
-
-  .actions{display:flex; align-items:center; gap:10px}
-
-  /* Back button (unchanged look, theme-aware) */
-  .back{
-    display:inline-flex; align-items:center; gap:8px;
-    padding:10px 14px; border-radius:10px; border:1px solid var(--ring);
-    color:var(--primary); font-weight:700; background:var(--surface);
-  }
-  .back:hover{border-color:var(--primary)}
-
-  /* Theme toggle — compact, unobtrusive */
-  .toggle{
-    width:40px; height:38px; display:inline-flex; align-items:center; justify-content:center;
-    border-radius:10px; border:1px solid var(--ring);
-    background:var(--surface); color:var(--primary);
-    cursor:pointer; padding:0; line-height:1;
-  }
-  .toggle:focus-visible{outline:2px solid var(--primary); outline-offset:2px}
-  .toggle svg{width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:2}
-
-  /* Page title */
-  .mast{padding:36px 0 8px}
-  h1{
-    margin:0 0 6px;
-    font-size:clamp(28px, 3.2vw, 36px);
-    color:var(--primary);
-    letter-spacing:.2px;
-  }
-  .lead{margin:0; color:var(--muted); font-size:clamp(16px, 1.8vw, 18px)}
-
-  /* Subjects grid */
-  section{padding:28px 0}
-  .grid{display:grid; gap:12px; grid-template-columns: repeat(3, 1fr)}
-  @media (max-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
-  @media (max-width: 560px){ .grid{grid-template-columns:1fr} }
-
-  .card{
-    background:#fff;
-    border:1px solid var(--ring);
-    border-radius:var(--radius);
-    padding:16px;
-    box-shadow:var(--shadow);
-    background:var(--surface);
-  }
-  .card-head{
-    display:flex; align-items:center; gap:10px; margin-bottom:6px;
-  }
-  .ico{
-    width:28px; height:28px;
-    display:inline-flex; align-items:center; justify-content:center;
-    border-radius:8px; background:var(--paper); border:1px solid var(--ring);
-    color:var(--primary);
-    flex:0 0 28px;
-  }
-  .ico svg{width:18px; height:18px; stroke:currentColor; stroke-width:2; fill:none}
-  .card h3{margin:0; font-size:18px; color:var(--primary)}
-  .card p{margin:6px 0 0; color:#334155; font-size:15px}
-  html[data-theme="dark"] .card p{color:#cbd5e1}
-
-  /* Helpful notes */
-  .note{
-    background:var(--paper);
-    border:1px solid var(--ring);
-    border-radius:12px;
-    padding:14px;
-    color:#334155;
-  }
-  html[data-theme="dark"] .note{color:#cbd5e1}
-
-  /* Footer */
-  footer{margin-top:32px; border-top:1px solid var(--ring); padding:18px 0 34px; color:var(--muted); font-size:14px}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <div class="container header-row">
-    <div class="brand" aria-label="School">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M3 10l9-6 9 6-9 6-9-6z"/><path d="M21 10v6"/><path d="M3 10v6"/><path d="M12 16v6"/>
-      </svg>
-      Cusmaan Binu Cafaan <span>Secondary School</span>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="index.html" class="brand" aria-label="School home">
+        <img alt="Cusmaan Binu Cafaan School Logo" width="52" height="52" src="Images/logo.jpg">
+        <span class="brand-title">Cusmaan Binu Cafaan<br><small>Secondary School</small></span>
+      </a>
+
+      <ul class="nav">
+        <li><a href="central.html">Home</a></li>
+        <li class="has-dd">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">
+            About Us
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown" id="about-menu" role="menu">
+            <a href="About.html"><span>Overview</span> <span class="badge">About</span></a>
+            <a href="principle.html"><span>Principal’s Message</span></a>
+          </div>
+        </li>
+        <li class="has-dd">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="academics-menu">
+            Academics
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown" id="academics-menu" role="menu">
+            <a href="curriculum.html">Curriculum</a>
+            <a href="Timetable.html">Timetable</a>
+            <a href="admissions.html">Admissions</a>
+          </div>
+        </li>
+        <li class="has-dd">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="school-menu">
+            School Life
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown" id="school-menu" role="menu">
+            <a href="news.html">Events</a>
+            <a href="calendar.html">Calendar</a>
+            <a href="gallery.html">Gallery</a>
+          </div>
+        </li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#/enroll" class="cta">Enroll Now</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
     </div>
 
-    <div class="actions">
-      <!-- Dark mode toggle -->
-      <button class="toggle" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle dark mode">
-        <!-- Moon/Sun icon (switches via JS) -->
-        <svg id="iconMoon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg id="iconSun" viewBox="0 0 24 24" style="display:none">
-          <circle cx="12" cy="12" r="4"></circle>
-          <path d="M12 2v2M12 20v2M20 12h2M2 12H4M17 17l1.4 1.4M5.6 5.6L7 7M17 7l1.4-1.4M5.6 18.4L7 17"/>
-        </svg>
-      </button>
+    <div class="mobile-overlay" id="overlay"></div>
+    <nav class="drawer" id="drawer" aria-label="Mobile navigation">
+      <div class="container">
+        <button class="hamburger" id="closeDrawer" aria-label="Close menu">✕</button>
+        <div class="mnav">
+          <a href="central.html">Home</a>
+          <button type="button" data-mtoggle="about">About Us ▾</button>
+          <div class="m-sub" id="m-about"><div>
+            <a href="About.html">Overview</a>
+            <a href="principle.html">Principal’s Message</a>
+          </div></div>
 
-      <a href="index.html#/academics/curriculum" class="back" aria-label="Back to site">← Back</a>
-    </div>
-  </div>
-</header>
+          <button type="button" data-mtoggle="academics">Academics ▾</button>
+          <div class="m-sub" id="m-academics"><div>
+            <a href="curriculum.html">Curriculum</a>
+            <a href="Timetable.html">Timetable</a>
+            <a href="admissions.html">Admissions</a>
+          </div></div>
+
+          <button type="button" data-mtoggle="school">School Life ▾</button>
+          <div class="m-sub" id="m-school"><div>
+            <a href="news.html">Events</a>
+            <a href="calendar.html">Calendar</a>
+            <a href="gallery.html">Gallery</a>
+          </div></div>
+
+          <a href="jobs.html">Jobs</a>
+          <a href="contact.html">Contact</a>
+          <a href="#/enroll" class="m-cta">Enroll Now</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
 
 <main>
   <div class="container">
@@ -327,44 +269,62 @@
 
 <footer>
   <div class="container">
-    © <span id="year"></span> Cusmaan Binu Cafaan Secondary School
+    <div class="footer-main">
+      <div class="footer-column">
+        <h4>Cusmaan Binu Cafaan School</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <a>Hargeisa, Somaliland</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a>+252 63 410 5395</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <a href="mailto:info@cusmaancafaan.com">info@cusmaancafaan.com</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="About.html">About</a></li>
+          <li><a href="curriculum.html">Curriculum</a></li>
+          <li><a href="Admissions.html">Admissions</a></li>
+          <li><a href="jobs.html">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Newsletter</h4>
+        <p>Subscribe for the latest updates.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Go</button>
+        </form>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="#" aria-label="Twitter" target="_blank"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+          <a href="#" aria-label="Instagram" target="_blank"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">© <span id="year">2025</span> Cusmaan Binu Cafaan Secondary School. All Rights Reserved.</p>
+      <p class="developer-credit">Developed by Abdirahman Nuh 063 4037259</p>
+    </div>
   </div>
 </footer>
 
-<script>
-  // Year stamp
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Theme initialization: prefers-color-scheme on first visit, else saved preference
-  const root = document.documentElement;
-  const saved = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initial = saved || (prefersDark ? 'dark' : 'light');
-  setTheme(initial);
-
-  // Toggle button behavior
-  const btn = document.getElementById('themeToggle');
-  function setTheme(mode){
-    root.setAttribute('data-theme', mode);
-    localStorage.setItem('theme', mode);
-    const isDark = mode === 'dark';
-    btn.setAttribute('aria-pressed', String(isDark));
-    // Swap icons
-    document.getElementById('iconMoon').style.display = isDark ? 'none' : '';
-    document.getElementById('iconSun').style.display  = isDark ? '' : 'none';
-  }
-  btn.addEventListener('click', ()=>{
-    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-  });
-
-  // Keep in sync if OS preference changes and user hasn't chosen yet
-  if(!saved && window.matchMedia){
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)=>{
-      setTheme(e.matches ? 'dark' : 'light');
-    });
-  }
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>

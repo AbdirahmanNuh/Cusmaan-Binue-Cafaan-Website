@@ -6,138 +6,98 @@
 <title>Contact Us | Cusmaan Binu Cafaan Secondary School</title>
 <meta name="description" content="Get in touch with Cusmaan Binu Cafaan Secondary School. Find our address, phone, email, and office hours, or send us a message through our contact form." />
 <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
-<style>
-  /* --- BASE & UTILITY STYLES --- */
-  :root {
-    --primary: #114f7a; --primary-700: #0d3b60; --accent: #2e8b57;
-    --accent-700: #216845; --ink: #223f31; --muted: #6b7b8c;
-    --paper: #f6f8fb; --ring: rgba(17, 76, 129, .14);
-    --shadow: 0 10px 30px rgba(17, 76, 129, .10); --radius: 14px; --header-h: 74px;
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--ink); background: var(--paper); line-height: 1.6; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-  a { color: var(--primary); text-decoration: none; transition: all .2s; }
-  a:hover { color: var(--accent); }
-  h1, h2, h3 { color: var(--primary-700); }
-  .lead { color: var(--muted); font-size: 1.1rem; }
-
-  /* --- HEADER & FOOTER --- */
-  .site-header { position: sticky; top: 0; height: var(--header-h); background: #fff; z-index: 1000; box-shadow: 0 2px 14px rgba(0,0,0,.04); }
-  .nav-row { height: 100%; display: flex; align-items: center; }
-  .brand { display: flex; align-items: center; gap: 12px; }
-  .nav { margin-left: auto; display: flex; list-style: none; gap: 8px; padding: 0; }
-  .nav a { display: block; padding: 12px 14px; border-radius: 10px; color: var(--primary-700); font-weight: 600; font-size: 15px; }
-  .nav a.active, .nav a:hover { background: var(--paper); color: var(--primary); }
-  footer { margin-top: 64px; background: #0d3b60; color: #c7d7e6; padding: 28px 0; text-align: center; }
-  footer a { color: #cfe6ff; }
-  
-  /* --- CONTACT PAGE STYLES --- */
-  .page-header { text-align: center; margin-bottom: 32px; }
-  .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    align-items: flex-start;
-  }
-  .contact-card {
-    background: #fff;
-    padding: 24px;
-    border-radius: var(--radius);
-    border: 1px solid #e0e6ec;
-    box-shadow: var(--shadow);
-  }
-  
-  /* Form Styles */
-  .contact-form label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
-    font-size: 0.9rem;
-  }
-  .contact-form .form-group {
-    margin-bottom: 16px;
-  }
-  .contact-form .input-field {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #d1d9e4;
-    font-size: 1rem;
-    transition: border-color .2s, box-shadow .2s;
-  }
-  .contact-form .input-field:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--ring);
-  }
-  .contact-form .submit-btn {
-    width: 100%;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color .2s;
-  }
-  .contact-form .submit-btn:hover {
-    background-color: var(--accent-700);
-  }
-
-  /* Details List Styles */
-  .contact-details ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .contact-details li {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  .contact-details .icon {
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    margin-top: 4px;
-    color: var(--accent);
-  }
-  .contact-details strong {
-    display: block;
-    color: var(--primary-700);
-  }
-  .map-container {
-    margin-top: 24px;
-    aspect-ratio: 16/9;
-    background-color: #e0e6ec;
-    border-radius: var(--radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted);
-    font-weight: 600;
-  }
-
-  /* Responsive Adjustments */
-  @media (max-width: 900px) {
-    .contact-layout { grid-template-columns: 1fr; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="site-header">
+  <header class="site-header">
     <div class="container nav-row">
-        <a href="index.html" class="brand" aria-label="School home"><img alt="School Logo" width="52" height="52" src="data:image/webp;base64,UklGRj0AAABXRUJQVlA4TBkAAAAvE8AAEJ8AP0nWgFvM0KJAAf8S4mJg1qgYwAAAPr8zv9PAAEAAABWUDhMFQAAADYkQAAAHrjnk7o/3qv0yq0T3oAAABJAAA..."></a>
-        <ul class="nav">
-            <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="news.html">News</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="contact.html" class="active">Contact</a></li>
-        </ul>
+      <a href="index.html" class="brand" aria-label="School home">
+        <img alt="Cusmaan Binu Cafaan School Logo" width="52" height="52" src="Images/logo.jpg">
+        <span class="brand-title">Cusmaan Binu Cafaan<br><small>Secondary School</small></span>
+      </a>
+
+      <ul class="nav">
+        <li><a href="central.html">Home</a></li>
+        <li class="has-dd">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">
+            About Us
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown" id="about-menu" role="menu">
+            <a href="About.html"><span>Overview</span> <span class="badge">About</span></a>
+            <a href="principle.html"><span>Principal’s Message</span></a>
+          </div>
+        </li>
+        <li class="has-dd">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="academics-menu">
+            Academics
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown" id="academics-menu" role="menu">
+            <a href="curriculum.html">Curriculum</a>
+            <a href="Timetable.html">Timetable</a>
+            <a href="admissions.html">Admissions</a>
+          </div>
+        </li>
+        <li class="has-dd">
+          <button aria-haspopup="true" aria-expanded="false" aria-controls="school-menu">
+            School Life
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="dropdown" id="school-menu" role="menu">
+            <a href="news.html">Events</a>
+            <a href="calendar.html">Calendar</a>
+            <a href="gallery.html">Gallery</a>
+          </div>
+        </li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#/enroll" class="cta">Enroll Now</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
     </div>
-</header>
+
+    <div class="mobile-overlay" id="overlay"></div>
+    <nav class="drawer" id="drawer" aria-label="Mobile navigation">
+      <div class="container">
+        <button class="hamburger" id="closeDrawer" aria-label="Close menu">✕</button>
+        <div class="mnav">
+          <a href="central.html">Home</a>
+          <button type="button" data-mtoggle="about">About Us ▾</button>
+          <div class="m-sub" id="m-about"><div>
+            <a href="About.html">Overview</a>
+            <a href="principle.html">Principal’s Message</a>
+          </div></div>
+
+          <button type="button" data-mtoggle="academics">Academics ▾</button>
+          <div class="m-sub" id="m-academics"><div>
+            <a href="curriculum.html">Curriculum</a>
+            <a href="Timetable.html">Timetable</a>
+            <a href="admissions.html">Admissions</a>
+          </div></div>
+
+          <button type="button" data-mtoggle="school">School Life ▾</button>
+          <div class="m-sub" id="m-school"><div>
+            <a href="news.html">Events</a>
+            <a href="calendar.html">Calendar</a>
+            <a href="gallery.html">Gallery</a>
+          </div></div>
+
+          <a href="jobs.html">Jobs</a>
+          <a href="contact.html">Contact</a>
+          <a href="#/enroll" class="m-cta">Enroll Now</a>
+        </div>
+      </div>
+    </nav>
+  </header>
 
 <main>
     <section class="container" style="padding-top: 48px; padding-bottom: 48px;">
@@ -221,10 +181,61 @@
 </main>
 
 <footer>
-    <div class="container">
-        <p>&copy; 2025 Cusmaan Binu Cafaan Secondary School. All rights reserved. | <a href="contact.html">Contact Us</a></p>
-    </div>
-</footer>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-column">
+        <h4>Cusmaan Binu Cafaan School</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <a>Hargeisa, Somaliland</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a>+252 63 410 5395</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <a href="mailto:info@cusmaancafaan.com">info@cusmaancafaan.com</a>
+          </li>
+        </ul>
+      </div>
 
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="About.html">About</a></li>
+          <li><a href="curriculum.html">Curriculum</a></li>
+          <li><a href="Admissions.html">Admissions</a></li>
+          <li><a href="jobs.html">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Newsletter</h4>
+        <p>Subscribe for the latest updates.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Go</button>
+        </form>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="#" aria-label="Twitter" target="_blank"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+          <a href="#" aria-label="Instagram" target="_blank"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">© <span id="year">2025</span> Cusmaan Binu Cafaan Secondary School. All Rights Reserved.</p>
+      <p class="developer-credit">Developed by Abdirahman Nuh 063 4037259</p>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
