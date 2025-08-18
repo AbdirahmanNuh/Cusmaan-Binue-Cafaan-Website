@@ -580,6 +580,13 @@ h1, h2, h3, h4 {
 
   /* --- PRINCIPLE --- */
 
+ /* Use Flexbox for consistent spacing in the Principal's message */
+.principal-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start; /* Add this line */
+}
   
   /* --- Admissions --- */
  
