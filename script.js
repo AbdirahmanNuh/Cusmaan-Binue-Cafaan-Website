@@ -243,6 +243,8 @@
           }
   
           select.addEventListener('change', (e)=>render(e.target.value));
+          select.value = 'Form 4A';
+        select.dispatchEvent(new Event('change'));
         }
       },
   
@@ -542,3 +544,5 @@ if(!saved && window.matchMedia){
     setTheme(e.matches ? 'dark' : 'light');
   });
 }
+
+  

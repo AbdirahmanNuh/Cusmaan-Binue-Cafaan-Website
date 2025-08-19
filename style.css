@@ -41,6 +41,10 @@ body {
   padding: 0 20px;
 }
 
+.container--wide {
+  max-width: 1100px; /* You can adjust this value as needed */
+}
+
 a {
   color: var(--primary);
   text-decoration: none;
@@ -203,7 +207,7 @@ h1, h2, h3, h4 {
   .section .lead{color:var(--muted); margin-bottom:26px}
   .grid{display:grid; gap:18px}
   .grid.cards{grid-template-columns:repeat(3,1fr)}
-  .card{background:#fff; border:1px solid #edf0f5; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+  .card{background:#fff; border:1px solid #edf0f5; border-radius:var(--radius); padding:18px 14px; box-shadow:var(--shadow)}
   .card h3{margin:0 0 8px; font-size:18px; color:var(--primary-700)}
   .card p{margin:0; color:var(--ink)}
   .link-row{margin-top:16px}
@@ -866,7 +870,7 @@ h1, h2, h3, h4 {
     background:#fff;
     border:1px solid var(--ring);
     border-radius:var(--radius);
-    padding:16px;
+    padding:16px 12px;
     box-shadow:var(--shadow);
     background:var(--surface);
   }
@@ -897,3 +901,154 @@ h1, h2, h3, h4 {
 
   /* Footer */
   footer{margin-top:32px; border-top:1px solid var(--ring); padding:18px 0 34px; color:var(--muted); font-size:14px}
+
+  /* CTA Container */
+  .cta-container {
+    text-align: left; 
+    margin-top: 24px;
+  }
+
+  .cta-container .btn {
+    font-weight: 400; 
+  }
+
+/* --- Modern Enrollment Page Styles --- /
+.enrollment-page.modern-form {
+background-color: #f9fbfd; / A very light background */
+
+
+.enrollment-page .page-header.centered {
+text-align: center;
+margin-bottom: 40px;
+}
+
+.enrollment-page .page-header h1 {
+color: var(--primary-700);
+margin-bottom: 8px;
+}
+
+.enrollment-page .page-header .lead {
+color: var(--muted);
+font-size: 1.1rem;
+}
+
+.enrollment-page .enrollment-form.card {
+padding: 30px;
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+background-color: #fff;
+}
+
+.enrollment-page .enrollment-form fieldset {
+border: none;
+padding: 0;
+margin: 0 0 30px 0;
+}
+
+.enrollment-page .enrollment-form legend {
+font-size: 1.1rem;
+font-weight: 700;
+color: var(--primary-700);
+margin-bottom: 20px;
+padding-bottom: 8px;
+border-bottom: 2px solid var(--primary);
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.enrollment-page .enrollment-form legend svg.icon {
+width: 24px;
+height: 24px;
+fill: var(--primary);
+}
+
+.enrollment-page .enrollment-form .form-group {
+margin-bottom: 20px;
+}
+
+.enrollment-page .enrollment-form label {
+display: block;
+font-weight: 600;
+margin-bottom: 8px;
+color: var(--ink);
+font-size: 0.95rem;
+}
+
+.enrollment-page .enrollment-form input,
+.enrollment-page .enrollment-form select,
+.enrollment-page .enrollment-form textarea {
+width: 100%;
+padding: 12px 15px;
+border-radius: 8px;
+border: 1px solid #ced4da;
+font-size: 1rem;
+font-family: inherit;
+transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.enrollment-page .enrollment-form input:focus,
+.enrollment-page .enrollment-form select:focus,
+.enrollment-page .enrollment-form textarea:focus {
+outline: none;
+border-color: var(--accent);
+box-shadow: 0 0 0 0.2rem rgba(var(--accent-rgb), 0.25);
+}
+
+.enrollment-page .enrollment-form select {
+appearance: none; /* Remove default arrow */
+background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23343a40" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z"/></svg>');
+background-repeat: no-repeat;
+background-position: right 12px center;
+background-size: 16px 12px;
+}
+
+.enrollment-page .enrollment-form .form-grid-2 {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
+}
+
+.enrollment-page .enrollment-form .form-grid-2 .full-width {
+grid-column: 1 / -1;
+}
+
+.enrollment-page .enrollment-form .submit-btn {
+display: block;
+width: 100%;
+padding: 14px 20px;
+font-size: 1rem;
+font-weight: 600;
+color: #fff;
+background-color: var(--primary);
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: background-color 0.15s ease-in-out;
+}
+
+.enrollment-page .enrollment-form .submit-btn:hover {
+background-color: var(--primary-700);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+.enrollment-page .enrollment-form .form-grid-2 {
+grid-template-columns: 1fr;
+}
+}
+
+/* --- New styles for side-by-side form columns --- */
+.enrollment-page .enrollment-form .form-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px; /* Adjust the space between the two columns */
+}
+
+/* Responsive adjustments for the new columns */
+@media (max-width: 768px) {
+  .enrollment-page .enrollment-form .form-columns {
+    grid-template-columns: 1fr;
+    gap: 0; /* No horizontal gap when stacked */
+  }
+}
