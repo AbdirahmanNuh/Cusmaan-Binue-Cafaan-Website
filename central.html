@@ -147,7 +147,7 @@
     
           <div>
             <div class="video-frame">
-              <video src="Images/promo.mp4" poster="Images/promo-poster.jpg" controls playsinline></video>
+                                    <video src="Images/promo.mp4" poster="Images/Thumbnail.jpg" controls playsinline></video>
             </div>
             <small>Promo • 1–2 minutes • Campus & student life</small>
           </div>
@@ -169,7 +169,7 @@
 
             <figure class="portrait-sm">
               <div class="avatar-circle">
-                <img src="Images/logo.jpg" alt="Portrait of the Principal" />
+                <img src="Images/Pricnipal2.jpg" alt="Portrait of the Principal" />
               </div>
               <figcaption>Ahmed Bihi Abdi — Principal</figcaption>
             </figure>
@@ -450,21 +450,57 @@
       <div class="gallery-grid">
         <a href="Images/school-campus.jpg" class="gallery-item" data-category="events">
           <img src="Images/school-campus.jpg" alt="A student presenting their winning project at the Science Fair">
+          <div class="gallery-overlay">
+            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
         </a>
         <a href="Images/school-campus.jpg" class="gallery-item" data-category="events">
           <img src="Images/school-campus.jpg" alt="Graduates tossing their caps in the air in celebration">
+          <div class="gallery-overlay">
+            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
         </a>
         <a href="Images/school-campus.jpg" class="gallery-item" data-category="campus">
           <img src="Images/school-campus.jpg" alt="The main school building on a sunny day">
+          <div class="gallery-overlay">
+            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
         </a>
         <a href="Images/school-campus.jpg" class="gallery-item" data-category="academics">
           <img src="Images/school-campus.jpg" alt="A science class conducting an experiment in the lab">
+          <div class="gallery-overlay">
+            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
         </a>
         <a href="Images/school-campus.jpg" class="gallery-item" data-category="student-life">
           <img src="Images/school-campus.jpg" alt="Students collaborating on a project in the library">
+          <div class="gallery-overlay">
+            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
         </a>
         <a href="Images/school-campus.jpg" class="gallery-item" data-category="campus">
           <img src="Images/school-campus.jpg" alt="The school library filled with books">
+          <div class="gallery-overlay">
+            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
         </a>
         </div>
     
@@ -473,6 +509,17 @@
       </div>
     
     </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-overlay" id="lightbox">
+      <div class="lightbox-content">
+        <img src="" id="lightbox-image" alt="Full-size gallery image">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+      </div>
+      <button class="lightbox-close" id="lightbox-close" title="Close">&times;</button>
+      <button class="lightbox-prev" id="lightbox-prev" title="Previous">‹</button>
+      <button class="lightbox-next" id="lightbox-next" title="Next">›</button>
+    </div>
 
     <div data-view="list" class="view job-list-page">
       <section class="container container--wide" style="padding-top: 64px;">            
@@ -489,7 +536,7 @@
                 <span>Full-time</span><span>Main Campus, Hargeisa</span><span class="closing-date"></span>
               </div>
               <p>Looking for an experienced Mathematics teacher to deliver engaging lessons for Forms 1-4, inspiring deep understanding and appreciation of the subject.</p>
-              <a href="jobs.html#job-math-teacher" class="read-more-btn" aria-label="Read more about the Mathematics Teacher position">Read More →</a>
+              <a href="job-math-teacher.html" class="read-more-btn" aria-label="Read more about the Mathematics Teacher position">Read More →</a>
             </article>
             
             <article class="job-listing">
@@ -498,7 +545,7 @@
                 <span>Full-time</span><span>Main Campus, Hargeisa</span><span class="closing-date"></span>
               </div>
               <p>We are hiring a creative English teacher to develop students' language, literacy, and critical thinking skills in a supportive, values-based classroom.</p>
-              <a href="jobs.html#job-english-teacher" class="read-more-btn" aria-label="Read more about the English Teacher position">Read More →</a>
+              <a href="job-english-teacher.html" class="read-more-btn" aria-label="Read more about the English Teacher position">Read More →</a>
             </article>
     
             <article class="job-listing">
@@ -507,7 +554,7 @@
                 <span>Part-time</span><span>Science Department</span><span class="closing-date-extended"></span>
               </div>
               <p>Responsible for maintaining lab equipment, preparing materials for experiments, and assisting with practical sessions in a safe learning environment.</p>
-              <a href="jobs.html#job-lab-technician" class="read-more-btn" aria-label="Read more about the Lab Technician position">Read More →</a>
+              <a href="job-lab-technician.html" class="read-more-btn" aria-label="Read more about the Lab Technician position">Read More →</a>
             </article>
           </div>
         </div>

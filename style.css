@@ -348,9 +348,19 @@ h1, h2, h3, h4 {
   .principal-title{margin:0 0 6px; font-size:clamp(28px,2.6vw,34px); color:var(--primary-700); letter-spacing:.2px}
   .principal-lead{margin:0 0 18px; color:var(--muted)}
   .principal-card{background:#fff; border:1px solid #edf0f5; border-radius:14px; box-shadow:var(--shadow); padding:24px}
-  .principal-card .message{position:relative; padding-left:18px}
-  .principal-card .message::before{content:""; position:absolute; left:0; top:.35rem; bottom:.35rem; width:4px; border-radius:4px; background:linear-gradient(180deg,var(--accent),#4aa97a)}
-  .principal-card p{margin:0 0 12px}
+  
+  /* Principal layout with image on left and message on right */
+  .principal-layout{display:grid; grid-template-columns:300px 1fr; gap:32px; align-items:start}
+  @media (max-width:900px){.principal-layout{grid-template-columns:1fr; gap:24px}}
+  
+  .principal-image{text-align:center}
+  .principal-image .avatar-circle{width:200px; height:200px; border-radius:999px; overflow:hidden; border:4px solid #fff; box-shadow:var(--shadow); margin:0 auto 12px; background:#f8fafc}
+  .principal-image .avatar-circle img{width:100%; height:100%; object-fit:cover; object-position:center}
+  .principal-image figcaption{padding:8px 12px; font-size:16px; color:var(--primary-700); font-weight:600}
+  
+  .principal-message{position:relative; padding-left:18px}
+  .principal-message::before{content:""; position:absolute; left:0; top:.35rem; bottom:.35rem; width:4px; border-radius:4px; background:linear-gradient(180deg,var(--accent),#4aa97a)}
+  .principal-message p{margin:0 0 12px}
   .signature{border-top:1px solid #edf0f5; margin-top:18px; padding-top:14px; color:#334155}
   .back{display:inline-block; margin-top:16px; padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none; color:#fff; background:var(--accent)}
   .back:hover{filter:brightness(0.95)}
@@ -465,6 +475,36 @@ h1, h2, h3, h4 {
   .gallery-item:hover img { transform: scale(1.05); }
   .gallery-item::after { content: ''; position: absolute; inset: 0; background-color: rgba(13, 59, 96, 0.5); transition: opacity .3s ease; z-index: 1; opacity: 0; }
   .gallery-item:hover::after { opacity: 1; }
+  
+  /* Gallery overlay with eye icon */
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(13, 59, 96, 0.3);
+    opacity: 0;
+    transition: opacity .3s ease;
+    z-index: 2;
+    cursor: pointer;
+  }
+  
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+  
+  .eye-icon {
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: transform .2s ease;
+  }
+  
+  .gallery-item:hover .eye-icon {
+    transform: scale(1.1);
+  }
 
   /* --- LIGHTBOX STYLES (CORRECTED) --- */
   .lightbox-overlay { position: fixed; inset: 0; background-color: rgba(13, 59, 96, 0.9); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: all .3s ease; }
